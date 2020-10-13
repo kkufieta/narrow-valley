@@ -109,7 +109,8 @@ def dont_run(items):
 def run(items):
     lst = [
         f"{items['player_name']} runs from {items['boss_name']}.", 
-        "You live to fight another day and return to town.",
+        "You live to fight another day.", 
+        f"{items['player_name']} returns to town.",
         ""
         ]
     time_print_loop(lst)
@@ -117,8 +118,8 @@ def run(items):
 
 def clover_attack_shout(items):
     lst = [
-        f"{items['boss_name']} thrust her hands out tward you and shouts *Primal Command*!, as a torrent of earth, hail, and flames crash into you.",
-        f"{items['boss_name']} shouts *Primal Command*! as a mass of stones, embers, and icy shards tornado around you, stricking you from every side.",
+        f"{items['boss_name']} thrust her hands out toward you and shouts *Primal Command*!, as a torrent of earth, hail, and flames crash into you.",
+        f"{items['boss_name']} shouts *Primal Command*! as a mass of stones, embers, and icy shards tornado around you, stiking you from every side.",
         f"{items['boss_name']} shouts *Primal Command*! and blast you with a tempest infused with firey ash, molten rock, and blistering steam."   
         ]
     time_print(random.choice(lst))
@@ -138,7 +139,7 @@ def clover_attacks(items):
 def elijah_attack_shout(items):
     lst = [
         f"{items['boss_name']} shouts *Banishing Light*! as a massive beam of light stricks you from the sky.",
-        f"Dark clouds start to break as {items['boss_name']} shouts *Banishing Light*! and a column of light blast you from above.",
+        f"Dark clouds start to break as {items['boss_name']} shouts *Banishing Light*! and a column of light blasts you from above.",
         f"{items['boss_name']} chops his hand downward and shouts *Banishing Light*! as a pillar of light collides with you."
         ]
     time_print(random.choice(lst))
@@ -176,7 +177,7 @@ def player_attack_shout(items):
     lst = [
         f"{items['player_name']} bolts toward {items['boss_name']}, shouting {items['key']}!, as he rams {items['boss_name']} with a punishing strike.",
         f"With outstretched arms and palms aimed at {items['boss_name']}, {items['player_name']} shouts {items['key']}! and hammers {items['boss_name']} with a powerful blow.",
-        f"Shouting {items['key']}!, {items['player_name']} releases a mighy force that smashes {items['boss_name']}."
+        f"Shouting {items['key']}!, {items['player_name']} releases a migthy force that smashes {items['boss_name']}."
         ]
     time_print(random.choice(lst))
 
@@ -271,8 +272,8 @@ def get_name(items):
 
 def intro_story():
     lst = [
-        "A brave warrior wonders the world in search of great power.",
-        "their journey leads them to two sacred mountains divided by a village in a narrow valley.",
+        "A brave warrior wanders the world in search of great power.",
+        "Their journey leads them to two sacred mountains divided by a village in a narrow valley.",
         ]
     time_print_loop(lst)
     lst = [
@@ -287,7 +288,8 @@ def intro_story():
         "                          ''' "
         ]
     time_print_img(lst)        
-    lst = ["At the peak of each holy mountain a great master resides.",
+    lst = [
+        "At the peak of each holy mountain a great master resides.",
         "One has conquered the forces of nature.",
         "The other manipulates spiritual energy.",
         ""
@@ -310,7 +312,7 @@ def intro_story():
         ]
     time_print_img(lst)
     lst = [
-        "After a much needed rest at the village inn, our hero sets out.",
+        "After a much-needed rest at the village inn, our hero sets out.",
         ""
         ]
     time_print_loop(lst)
@@ -318,7 +320,7 @@ def get_location(items):
     lst = [
         f"What do you wan't to do {items['player_name']}?",
         "(1) Traverse the wooded mountain to the east.",
-        "(2) Hike the snow covered mountain to the west."
+        "(2) Hike the snow-covered mountain to the west."
         ]
     time_print_loop(lst)
     number = input("(3) Check bag.\n")
@@ -425,7 +427,7 @@ def clover_fight(items):
 
 def clover_training(items):
     lst = [
-        "For the next year you apprentice yourself to Clover, cultivating your skills.",
+        "For the next year, you apprentice yourself to Clover, cultivating your skills.",
         "You pickup that a man named Elijah has been trying to steal Clover's power for many years.",
         "You promise Clover that you will bring an end to Elijah's reign of terror.",
         "Clover is touched by your commitment.",
@@ -434,7 +436,7 @@ def clover_training(items):
     time_print_loop(lst)
     contine_on()           
     lst = [
-        "To conclude your final day of training, Clover requests that you meet her infront of her house.",
+        "To conclude your final day of training, Clover requests that you meet her in front of her house.",
         f'''(Clover) "{items['player_name']}, everything that you have endured was to prepare you for this."''',
         ""
         ]
@@ -450,7 +452,7 @@ def clover_training(items):
     items['key'] = '*Primal Command*'
     contine_on()
     lst = [
-        "You recieve *Primal Command!*",
+        "You receive *Primal Command!*",
         "",
         "With the training from Clover and the power of *Primal Command*, you leave and head into town.",
         ""
@@ -634,7 +636,7 @@ def elijah(items):
 
 def play():
     items = {
-    'key':'*Some old map*', 
+    'key':'*Some old map*' 
     'player_name':''
     }
     title()
