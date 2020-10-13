@@ -537,7 +537,7 @@ def elijah_offer(items):
     contine_on()
     lst = [
         f'''(Elijah) "{items['player_name']}, I am the master you seek."''',
-        '''(Elijah) "Take my guidence and uncover the limitless potential of the spirit relm."''',
+        '''(Elijah) "Take my guidance and uncover the limitless potential of the spirit realm."''',
         "",
         "Will you accept his offer?"
         ]
@@ -563,7 +563,7 @@ def elijah_fight(items):
     time_print_loop(lst)
     contine_on()
     lst = [
-        f'''(Elijah) "I crave the power of {items['key']} and i will crush you to obtain it!"''', 
+        f'''(Elijah) "I crave the power of {items['key']} and I will crush you to obtain it!"''', 
         "Elijah gets into a fighting stance.",
         ""
         ]
@@ -573,17 +573,17 @@ def elijah_fight(items):
 
 def elijah_training(items):
     lst = [
-        "For the next year you memorize every mystical technique offerered to you by Elijah.",
-        "Elijah shares his disire to increase his capabilities by defeating other masters and taking their power.",
-        "He wants you to assist him and share the bounty, both of you becomming allpowerful.",
+        "For the next year, you memorize every mystical technique offered to you by Elijah.",
+        "Elijah shares his desire to increase his capabilities by defeating other masters and taking their power.",
+        "He wants you to assist him and share the bounty, both of you becoming all-powerful.",
         "Elijah feels that with you, his dreams can be realized.",
         ""
         ]
     time_print_loop(lst)
     contine_on()    
     lst = [    
-        "To conclude your final day of training, Elijah requests that you meet him infront of his house.",
-        f'''(Elijah) "{items['player_name']}, everything that you have encountered has prepare you for this."''',
+        "To conclude your final day of training, Elijah requests that you meet him in front of his house.",
+        f'''(Elijah) "{items['player_name']}, everything that you have encountered has prepared you for this."''',
         ""
         ]
     time_print_loop(lst)
@@ -599,7 +599,7 @@ def elijah_training(items):
     contine_on()
     items['key'] = '*Banishing Light*'
     lst = [
-        "You recieve *Banishing Light*",
+        "You receive *Banishing Light*",
         "",
         "With the training from Elijah and the power of *Banishing Light*, you leave and head into town.",
         ""
@@ -619,7 +619,7 @@ def elijah_turned_down(items):
 # <----- Elijah Flow ----->
 
 def elijah(items):
-    time_print("You find yourself in front of a sizable log cabin surrounded by odd stone sculpturs, both covered in snow.")
+    time_print("You find yourself in front of a sizable log cabin surrounded by odd stone sculptures, both covered in snow.")
     if items['key'] == '*Banishing Light*':
         elijah_not_home(items)
     elif items['key'] == '*Primal Command*':
