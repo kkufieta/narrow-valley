@@ -90,8 +90,6 @@ def pick_who_attacks(items):
         player_turn(items)
     elif result == 'tails':
         boss_turn(items)
-    else:
-        pick_who_attacks(items)
 
 #<-------------------------------- Boss Functions -------------------------------->
 
