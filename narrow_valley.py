@@ -18,35 +18,27 @@ def time_print(string):
 
 
 def time_print_loop(lst):
-    for i in range(len(lst)):
-        time_print(lst[i])
+    for element in lst:
+        time_print(element)
 
 
 def time_print_img(lst):
-    for i in range(len(lst)):
-        print(lst[i])
+    for element in lst:
+        print(element)
         time.sleep(.5)
 
-
-def valid_input(promt, option1, option2):
+def valid_input(prompt, option1, option2):
     while True:
-        response = input(promt).lower()
+        response = input(prompt).lower()
         if option1 in response:
             return option1
         if option2 in response:
             return option2
         else:
             time_print("I don't understand.")
-    return response
 
-
-def contine_on():
-    while True:
-        response = input("Enter (1) to continue.\n").lower()
-        if "1" in response:
-            break
-        else:
-            time_print("I don't understand.")
+def continue_on():
+    input("(Enter) to continue.\n")
 
 
 # <--------------- Fight System --------------->
@@ -103,8 +95,6 @@ def pick_who_attacks(items):
         player_turn(items)
     elif result == 'tails':
         boss_turn(items)
-    else:
-        pick_who_attacks(items)
 
 
 # <-------------------- Boss Functions -------------------->
@@ -219,7 +209,7 @@ def player_attack(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
 
 
 def boss_taunt(items):
@@ -331,7 +321,7 @@ def intro_story():
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     lst = [
         "           )            _     / \ ",
         "   /\    ( _   _._     / \   /^  \ ",
@@ -435,7 +425,7 @@ def clover_offer(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     lst = [
         f'''(Clover) "{items['player_name']}, I am the master you seek."''',
         '''(Clover) "Train under me and unearth the secrets only I and'''
@@ -467,7 +457,7 @@ def clover_fight(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     lst = [
         '''(Clover) "I will not be intimidated by one of Elijah's'''
         ''' thugs!"''',
@@ -476,7 +466,7 @@ def clover_fight(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     fight(items)
 
 
@@ -492,7 +482,7 @@ def clover_training(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     lst = [
         "To conclude your final day of training, Clover requests that you"
         " meet her in front of her house.",
@@ -501,7 +491,7 @@ def clover_training(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     print_primal_command()
     lst = [
         '''(Clover) "*Primal Command* is my greatest weapon and now it is'''
@@ -512,7 +502,7 @@ def clover_training(items):
         ]
     time_print_loop(lst)
     items['key'] = '*Primal Command*'
-    contine_on()
+    continue_on()
     lst = [
         "You receive *Primal Command!*",
         "",
@@ -607,7 +597,7 @@ def elijah_offer(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     lst = [
         f'''(Elijah) "{items['player_name']}, I am the master you seek."''',
         f'''(Elijah) "Take my guidance and uncover the limitless potential'''
@@ -639,7 +629,7 @@ def elijah_fight(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     lst = [
         f'''(Elijah) "I crave the power of {items['key']} and I will crush'''
         ''' you to obtain it!"''',
@@ -647,7 +637,7 @@ def elijah_fight(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     fight(items)
 
 
@@ -663,7 +653,7 @@ def elijah_training(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     lst = [
         "To conclude your final day of training, Elijah requests that you meet"
         " him in front of his house.",
@@ -672,7 +662,7 @@ def elijah_training(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     print_banishing_light()
     lst = [
         '''(Elijah) "*Banishing Light* is my greatest technique and now it '''
@@ -684,7 +674,7 @@ def elijah_training(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     items['key'] = '*Banishing Light*'
     lst = [
         "You receive *Banishing Light*",
