@@ -125,9 +125,13 @@ def run(items):
 
 def clover_attack_shout(items):
     lst = [
-        f"{items['boss_name']} thrust her hands out toward you and shouts *Primal Command*!, as a torrent of earth, hail, and flames crash into you.",
-        f"{items['boss_name']} shouts *Primal Command*! as a mass of stones, embers, and icy shards tornado around you, stiking you from every side.",
-        f"{items['boss_name']} shouts *Primal Command*! and blast you with a tempest infused with firey ash, molten rock, and blistering steam."
+        f"{items['boss_name']} thrust her hands out toward you and shouts"
+        " *Primal Command*!, as a torrent of earth, hail, and flames"
+        " crash into you.",
+        f"{items['boss_name']} shouts *Primal Command*! as a mass of stones,"
+        " embers, and icy shards tornado around you, stiking you from every side.",
+        f"{items['boss_name']} shouts *Primal Command*! and blast you with a"
+        " tempest infused with firey ash, molten rock, and blistering steam."
         ]
     time_print(random.choice(lst))
 
@@ -147,9 +151,12 @@ def clover_attacks(items):
 
 def elijah_attack_shout(items):
     lst = [
-        f"{items['boss_name']} shouts *Banishing Light*! as a massive beam of light stricks you from the sky.",
-        f"Dark clouds part as {items['boss_name']} shouts *Banishing Light*! and a column of light blasts you from above.",
-        f"{items['boss_name']} chops his hand downward and shouts *Banishing Light*! as a pillar of light collides with you."
+        f"{items['boss_name']} shouts *Banishing Light*! as a massive beam"
+        " of light stricks you from the sky.",
+        f"Dark clouds part as {items['boss_name']} shouts *Banishing Light*!"
+        " and a column of light blasts you from above.",
+        f"{items['boss_name']} chops his hand downward and shouts *Banishing"
+        " Light*! as a pillar of light collides with you."
         ]
     time_print(random.choice(lst))
 
@@ -173,7 +180,8 @@ def boss_turn(items):
     else:
         elijah_attacks(items)
     if items['player_hp'] > 0:
-        answer = valid_input('Continue fighting or run away?\n(1) Fight\n(2) Run\n', '1', '2')
+        answer = valid_input('Continue fighting or run away?\n(1) Fight\n(2)'
+                             ' Run\n', '1', '2')
         if answer == "1":
             dont_run(items)
         elif answer == "2":
@@ -188,9 +196,13 @@ def boss_turn(items):
 
 def player_attack_shout(items):
     lst = [
-        f"{items['player_name']} bolts toward {items['boss_name']}, shouting {items['key']}!, as he rams {items['boss_name']} with a punishing strike.",
-        f"With outstretched arms and palms aimed at {items['boss_name']}, {items['player_name']} shouts {items['key']}! and hammers {items['boss_name']} with a powerful blow.",
-        f"Shouting {items['key']}!, {items['player_name']} releases a migthy force that smashes {items['boss_name']}."
+        f"{items['player_name']} bolts toward {items['boss_name']}, shouting"
+        f" {items['key']}!, as he rams {items['boss_name']} with a punishing strike.",
+        f"With outstretched arms and palms aimed at {items['boss_name']},"
+        f" {items['player_name']} shouts {items['key']}! and hammers"
+        f" {items['boss_name']} with a powerful blow.",
+        f"Shouting {items['key']}!, {items['player_name']} releases a migthy"
+        f" force that smashes {items['boss_name']}."
         ]
     time_print(random.choice(lst))
 
@@ -689,7 +701,7 @@ def elijah_training(items):
 
 def elijah_turned_down(items):
     lst = [
-        '''(Elijah) - "I hope you will reconsider my offer." ''',
+        '''(Elijah) "I hope you will reconsider my offer." ''',
         "You leave the sizable log cabin and return to town.",
         ""
         ]
