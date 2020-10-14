@@ -31,7 +31,6 @@ def valid_input(prompt, option1, option2):
             return option2
         else:
             time_print("I don't understand.")
-    return response
 
 def continue_on():
     input("Enter any character to continue.\n")
