@@ -33,7 +33,7 @@ def valid_input(prompt, option1, option2):
             time_print("I don't understand.")
 
 def continue_on():
-    input("Enter any character to continue.\n")
+    input("(Enter) to continue.\n")
 
 #<------------------------------------------------------------ Fight System ------------------------------------------------------------>    
 
