@@ -1,26 +1,32 @@
 import time
 import random
 
-#<------------------------------------------------------------ Basic Functions ------------------------------------------------------------>    
+# <--------------- Basic Functions --------------->
+
 
 def coin_flip():
-	return random.choice(['heads', 'tails'])
+    return random.choice(['heads', 'tails'])
+
 
 def die_roll():
-	return random.randint(1, 6)
+    return random.randint(1, 6)
+
 
 def time_print(string):
     print(string)
     time.sleep(2)
 
+
 def time_print_loop(lst):
     for i in range(len(lst)):
         time_print(lst[i])
+
 
 def time_print_img(lst):
     for i in range(len(lst)):
         print(lst[i])
         time.sleep(.5)
+
 
 def valid_input(promt, option1, option2):
     while True:
@@ -33,6 +39,7 @@ def valid_input(promt, option1, option2):
             time_print("I don't understand.")
     return response
 
+
 def contine_on():
     while True:
         response = input("Enter (1) to continue.\n").lower()
@@ -41,21 +48,23 @@ def contine_on():
         else:
             time_print("I don't understand.")
 
-#<------------------------------------------------------------ Fight System ------------------------------------------------------------>    
 
-def intro_fight():    
+# <--------------- Fight System --------------->
+
+
+def intro_fight():
     time_print('You are both still, waiting for the right time to make your move, and then...\n')
 
 
 def choose_stats(items):
     opt1 = {
-        'boss_hp': 15, 
+        'boss_hp': 15,
         'player_hp': 15,
         'boss_name': 'Elijah'
         }
     opt2 = {
-        'boss_hp': 15, 
-        'player_hp': 15, 
+        'boss_hp': 15,
+        'player_hp': 15,
         'boss_name': 'Clover',
         }
     if items['key'] == '*Primal Command*':
@@ -63,6 +72,7 @@ def choose_stats(items):
     else:
         items.update(opt2)
     return items
+
 
 def play_again():
     time_print("Would you like to play again?")
@@ -73,18 +83,20 @@ def play_again():
         time_print("Ok, thanks for playing!")
         lst = [
             "",
-            " ,----.                                 ,-----. ",                        
+            " ,----.                                 ,-----. ",
             "'  .-./    ,--,--.,--,--,--. ,---.     '  .-.  ',--.  ,--.,---. ,--.--. ",
             "|  | .---.' ,-.  ||        || .-. :    |  | |  | \  `'  /| .-. :|  .--' ",
-            "'  '--'  |\ '-'  ||  |  |  |\   --.    '  '-'  '  \    / \   --.|  | ",   
+            "'  '--'  |\ '-'  ||  |  |  |\   --.    '  '-'  '  \    / \   --.|  | ",
             " `------'  `--`--'`--`--`--' `----'     `-----'    `--'   `----'`--' ",
-            ""    
+            ""
             ]
         time_print_img(lst)
 
-#<----- Fight Flow ----->
 
-def pick_who_attacks(items):    
+# <----- Fight Flow ----->
+
+
+def pick_who_attacks(items):
     result = coin_flip()
     if result == 'heads':
         player_turn(items)
@@ -93,7 +105,9 @@ def pick_who_attacks(items):
     else:
         pick_who_attacks(items)
 
-#<-------------------------------- Boss Functions -------------------------------->
+
+# <-------------------- Boss Functions -------------------->
+
 
 def dont_run(items):
     lst = [
@@ -106,35 +120,39 @@ def dont_run(items):
     time_print(f'''({items['player_name']}) "{random.choice(lst)}"\n''')
     pick_who_attacks(items)
 
+
 def run(items):
     lst = [
-        f"{items['player_name']} runs from {items['boss_name']}.", 
-        "You live to fight another day.", 
+        f"{items['player_name']} runs from {items['boss_name']}.",
+        "You live to fight another day.",
         f"{items['player_name']} returns to town.",
         ""
         ]
     time_print_loop(lst)
     town(items)
 
+
 def clover_attack_shout(items):
     lst = [
         f"{items['boss_name']} thrust her hands out toward you and shouts *Primal Command*!, as a torrent of earth, hail, and flames crash into you.",
         f"{items['boss_name']} shouts *Primal Command*! as a mass of stones, embers, and icy shards tornado around you, stiking you from every side.",
-        f"{items['boss_name']} shouts *Primal Command*! and blast you with a tempest infused with firey ash, molten rock, and blistering steam."   
+        f"{items['boss_name']} shouts *Primal Command*! and blast you with a tempest infused with firey ash, molten rock, and blistering steam."
         ]
     time_print(random.choice(lst))
 
+
 def clover_attacks(items):
-    dmg = die_roll() + die_roll() 
+    dmg = die_roll() + die_roll()
     items['player_hp'] -= dmg
     clover_attack_shout(items)
     lst = [
         "",
-        f"{items['boss_name']} hits you for {dmg} damage.", 
+        f"{items['boss_name']} hits you for {dmg} damage.",
         f"your health is now at {items['player_hp']}",
         ""
         ]
     time_print_loop(lst)
+
 
 def elijah_attack_shout(items):
     lst = [
@@ -144,19 +162,21 @@ def elijah_attack_shout(items):
         ]
     time_print(random.choice(lst))
 
+
 def elijah_attacks(items):
-    dmg = die_roll() * 2 
+    dmg = die_roll() * 2
     items['player_hp'] -= dmg
     elijah_attack_shout(items)
     lst = [
         "",
-        f"{items['boss_name']} hits you for {dmg} damage.", 
+        f"{items['boss_name']} hits you for {dmg} damage.",
         f"your health is now at {items['player_hp']}",
         ""
         ]
     time_print_loop(lst)
 
-def boss_turn(items):    
+
+def boss_turn(items):
     if items['boss_name'] == 'Clover':
         clover_attacks(items)
     else:
@@ -170,8 +190,10 @@ def boss_turn(items):
     else:
         time_print('You have died!')
         play_again()
-        
-#<-------------------------------- Player Functions -------------------------------->
+
+
+# <-------------------- Player Functions -------------------->
+
 
 def player_attack_shout(items):
     lst = [
@@ -181,11 +203,12 @@ def player_attack_shout(items):
         ]
     time_print(random.choice(lst))
 
+
 def player_attack(items):
     if items['boss_name'] == 'Clover':
         dmg = die_roll() * 2
     else:
-        dmg = die_roll() + die_roll() 
+        dmg = die_roll() + die_roll()
     items['boss_hp'] -= dmg
     player_attack_shout(items)
     lst = [
@@ -197,6 +220,7 @@ def player_attack(items):
     time_print_loop(lst)
     contine_on()
 
+
 def boss_taunt(items):
     taunts = [
         "Not bad!",
@@ -206,6 +230,7 @@ def boss_taunt(items):
         "That won't happen again!"
         ]
     time_print(f'''({items['boss_name']}) "{random.choice(taunts)}"\n''')
+
 
 def winner_endings(items):
     time_print('You have Won!')
@@ -226,6 +251,7 @@ def winner_endings(items):
             ]
         time_print_loop(lst)
 
+
 def player_turn(items):
     player_attack(items)
     if items['boss_hp'] > 0:
@@ -234,41 +260,45 @@ def player_turn(items):
     else:
         winner_endings(items)
         play_again()
-            
-        
-        
-#<----- Fight ----->
+
+
+# <----- Fight ----->
+
 
 def fight(items):
     intro_fight()
     pick_who_attacks(choose_stats(items))
 
-#<------------------------------------------------------------ Story ------------------------------------------------------------>
+
+# <--------------- Story --------------->
+
 
 def title():
     lst = [
-        "         ,--.",                                                                                                                           
-        "       ,--.'|                                                                                       ,--,    ,--,",                        
-        "   ,--,:  : |                                                                    ,---.            ,--.'|  ,--.'|",                        
-        ",`--.'`|  ' :             __  ,-.  __  ,-.   ,---.           .---.              /__./|            |  | :  |  | :",                        
-        "|   :  :  | |           ,' ,'/ /|,' ,'/ /|  '   ,'\         /. ./|         ,---.;  ; |            :  : '  :  : '",                        
-        ":   |   \ | :  ,--.--.  '  | |' |'  | |' | /   /   |     .-'-. ' |        /___/ \  | |   ,--.--.  |  ' |  |  ' |      ,---.       .--,",  
-        "|   : '  '; | /       \ |  |   ,'|  |   ,'.   ; ,. :    /___/ \: |        \   ;  \ ' |  /       \ '  | |  '  | |     /     \    /_ ./|",  
-        "'   ' ;.    ;.--.  .-. |'  :  /  '  :  /  '   | |: : .-'.. '   ' .         \   \  \: | .--.  .-. ||  | :  |  | :    /    /  |, ' , ' :",  
-        "|   | | \   | \__\/: . .|  | '   |  | '   '   | .; :/___/ \:     '          ;   \  ' .  \__\/: . .'  : |__'  : |__ .    ' / /___/ \: |",  
-        "'   : |  ; .' ,' .--.; |;  : |   ;  : |   |   :    |.   \  ' .\  |           \   \   '  ,' .--.; ||  | '.'|  | '.'|'   ;   /|.  \  ' |",  
-        "|   | '`--'  /  /  ,.  ||  , ;   |  , ;    \   \  /  \   \   ' \ |            \   `  ; /  /  ,.  |;  :    ;  :    ;'   |  / | \  ;   :",  
-        "'   : |     ;  :   .'   \---'     ---'      `----'    \   \  |--'              :   \ |;  :   .'   \  ,   /|  ,   / |   :    |  \  \  ;",  
-        ";   |.'     |  ,     .-./                              \   \ |                  '---' |  ,     .-./---`-'  ---`-'   \   \  /    :  \  \ ", 
-        "'---'        `--`---'                                   '---'                          `--`---'                      `----'      \  ' ;", 
-        "                                                                                                                                  `--`", 
-                                                                                                                                    
+        "         ,--.",
+        "       ,--.'|                                                                                       ,--,    ,--,",
+        "   ,--,:  : |                                                                    ,---.            ,--.'|  ,--.'|",
+        ",`--.'`|  ' :             __  ,-.  __  ,-.   ,---.           .---.              /__./|            |  | :  |  | :",
+        "|   :  :  | |           ,' ,'/ /|,' ,'/ /|  '   ,'\         /. ./|         ,---.;  ; |            :  : '  :  : '",
+        ":   |   \ | :  ,--.--.  '  | |' |'  | |' | /   /   |     .-'-. ' |        /___/ \  | |   ,--.--.  |  ' |  |  ' |      ,---.       .--,",
+        "|   : '  '; | /       \ |  |   ,'|  |   ,'.   ; ,. :    /___/ \: |        \   ;  \ ' |  /       \ '  | |  '  | |     /     \    /_ ./|",
+        "'   ' ;.    ;.--.  .-. |'  :  /  '  :  /  '   | |: : .-'.. '   ' .         \   \  \: | .--.  .-. ||  | :  |  | :    /    /  |, ' , ' :",
+        "|   | | \   | \__\/: . .|  | '   |  | '   '   | .; :/___/ \:     '          ;   \  ' .  \__\/: . .'  : |__'  : |__ .    ' / /___/ \: |",
+        "'   : |  ; .' ,' .--.; |;  : |   ;  : |   |   :    |.   \  ' .\  |           \   \   '  ,' .--.; ||  | '.'|  | '.'|'   ;   /|.  \  ' |",
+        "|   | '`--'  /  /  ,.  ||  , ;   |  , ;    \   \  /  \   \   ' \ |            \   `  ; /  /  ,.  |;  :    ;  :    ;'   |  / | \  ;   :",
+        "'   : |     ;  :   .'   \---'     ---'      `----'    \   \  |--'              :   \ |;  :   .'   \  ,   /|  ,   / |   :    |  \  \  ;",
+        ";   |.'     |  ,     .-./                              \   \ |                  '---' |  ,     .-./---`-'  ---`-'   \   \  /    :  \  \ ",
+        "'---'        `--`---'                                   '---'                          `--`---'                      `----'      \  ' ;",
+        "                                                                                                                                  `--`",
+
         ]
     time_print_img(lst)
+
 
 def get_name(items):
     items['player_name'] = input("To start enter your name\n")
     return items
+
 
 def intro_story():
     lst = [
@@ -287,7 +317,7 @@ def intro_story():
         "/        `.  / /       `.''' .-' ^    '-._ `._  `-",
         "                          ''' "
         ]
-    time_print_img(lst)        
+    time_print_img(lst)
     lst = [
         "At the peak of each holy mountain a great master resides.",
         "One has conquered the forces of nature.",
@@ -316,6 +346,8 @@ def intro_story():
         ""
         ]
     time_print_loop(lst)
+
+
 def get_location(items):
     lst = [
         f"What do you wan't to do {items['player_name']}?",
@@ -326,11 +358,14 @@ def get_location(items):
     number = input("(3) Check bag.\n")
     return number
 
+
 def check_bag(items):
     time_print(f"You have {items['key']} in your bag.\n")
     town(items)
 
-#<----- Story Flow ----->
+
+# <----- Story Flow ----->
+
 
 def town(items):
     choice = get_location(items)
@@ -343,42 +378,47 @@ def town(items):
     else:
         town(items)
 
-#<-------------------------------- Clover Functions -------------------------------->
+
+# <-------------------- Clover Functions -------------------->
+
+
 def print_clover_house():
     lst = [
-            "                                   /  \   .      ~         /\         `", 
+            "                                   /  \   .      ~         /\         `",
             "  ~      /\      .            /\  /    \                  /`-\ ",
             "        /  \       `   /\    /^ \/  ^   \      /\  *     /  ^ \  .",
             "   .   / ^  \         / ^\  /  ^/  ^  )  \    /^ \      /  ^ ^ \ ",
             "      /`     \     ` /  ^ \/^ ^/^   (     \  /  ^ \    /      ^ \ ",
             "     /    ^   \~    / ^   /  ^/ ^ ^ ) ) ^  \/  ^^  \  / ^      `_\ ",
-            "    /^  ^   `  \   / ^ ^   ^ / ^  (  ( ^   / ^   ^  \/`   ^       \ ",     
+            "    /^  ^   `  \   / ^ ^   ^ / ^  (  ( ^   / ^   ^  \/`   ^       \ ",
             "   /     ^ ^    \ /  ^ ^ ^^ / ^  (____) ^ /       ^ /     ^ ^   ^  \ ",
             "  /`   ^ ^  ^    \    ^  ^  ______|__|_____^ ^     / ^-    ^      ^ \ ",
             " / `'     ^     `-\     ^  /_______________\ ^ ^  / ^    ``     `-   \ ",
-            "/     ^  ^^   ^   ^\^     /_________________\  ^ /  ^  ^^     ^       \ ", 
-            "  -^ ^  ^ ^^-     ^ \^  ^  ||||||   |||__|||    /`-  ^  ^ ^^^   ^^-    \ ",       
+            "/     ^  ^^   ^   ^\^     /_________________\  ^ /  ^  ^^     ^       \ ",
+            "  -^ ^  ^ ^^-     ^ \^  ^  ||||||   |||__|||    /`-  ^  ^ ^^^   ^^-    \ ",
             "        | |                ||||||I  |||__|||              | |    ",
-            "||||||| [ ] |||||||||||||| ||||||___|||||||| |||||||||||| [ ] |||||||||| ", 
+            "||||||| [ ] |||||||||||||| ||||||___|||||||| |||||||||||| [ ] |||||||||| ",
             '""""""""""""""""""""""""""""""""===="""""""""""""""""""""""""""""""""""""" ',
-            "    |||||||||||||||||||||||||||=====|||||||||||||||||||||||||||||||| "   
+            "    |||||||||||||||||||||||||||=====|||||||||||||||||||||||||||||||| "
             ]
     time_print_img(lst)
 
+
 def print_primal_command():
     lst = [
-        "       ... ",  
-        "    :::;(;::: ", 
-        " .::;.) );:::::. ", 
-        ":::;`(,' (,;::::: ", 
-        ":::;;) .-. (';::: ", 
-        ":::;( ( * )'):;:: ", 
-        "'::;`),'-' (;::' ",  
-        "  ':(____),_)::' ",     
+        "       ... ",
+        "    :::;(;::: ",
+        " .::;.) );:::::. ",
+        ":::;`(,' (,;::::: ",
+        ":::;;) .-. (';::: ",
+        ":::;( ( * )'):;:: ",
+        "'::;`),'-' (;::' ",
+        "  ':(____),_)::' ",
         "    |_______| ",
-        "     \_____/ ",      
+        "     \_____/ ",
         ]
     time_print_img(lst)
+
 
 def clover_offer(items):
     print_clover_house()
@@ -397,6 +437,7 @@ def clover_offer(items):
         ]
     time_print_loop(lst)
 
+
 def clover_not_home(items):
     lst = [
         "Clover isn't home right now.",
@@ -406,6 +447,7 @@ def clover_not_home(items):
         ]
     time_print_loop(lst)
     town(items)
+
 
 def clover_fight(items):
     print_clover_house()
@@ -417,13 +459,14 @@ def clover_fight(items):
     time_print_loop(lst)
     contine_on()
     lst = [
-        '''(Clover) "I will not be intimidated by one of Elijah's thugs!"''', 
+        '''(Clover) "I will not be intimidated by one of Elijah's thugs!"''',
         "Clover twirls her hands in the air, forming a bright green aura around herself.",
         ""
         ]
     time_print_loop(lst)
     contine_on()
     fight(items)
+
 
 def clover_training(items):
     lst = [
@@ -434,7 +477,7 @@ def clover_training(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()           
+    contine_on()
     lst = [
         "To conclude your final day of training, Clover requests that you meet her in front of her house.",
         f'''(Clover) "{items['player_name']}, everything that you have endured was to prepare you for this."''',
@@ -460,6 +503,7 @@ def clover_training(items):
     time_print_loop(lst)
     town(items)
 
+
 def clover_turned_down(items):
     lst = [
         '''(Clover) "I hope you will reconsider my offer." ''',
@@ -469,7 +513,9 @@ def clover_turned_down(items):
     time_print_loop(lst)
     town(items)
 
+
 # <----- Clover Flow ----->
+
 
 def clover(items):
     time_print("You find yourself in front of a small wooden house surrounded by tall grass and massive pine trees.")
@@ -485,11 +531,13 @@ def clover(items):
         elif answer == "2":
             clover_turned_down(items)
 
-#<-------------------------------- Elijah Functions -------------------------------->
+
+# <-------------------- Elijah Functions -------------------->
+
 
 def print_elijah_house():
     lst = [
-                
+
         "         .           .       (    )       *                *",
         "    *                          )  )",
         "        .                     (  (              .      /\ ",
@@ -510,9 +558,10 @@ def print_elijah_house():
         ]
     time_print_img(lst)
 
+
 def print_banishing_light():
     lst = [
-        "         ( ",    
+        "         ( ",
         "   )    )\(   . ",
         "  (( `.((_))  )) ",
         "( ),\`.'    `-',' ",
@@ -526,6 +575,8 @@ def print_banishing_light():
         ""
         ]
     time_print_img(lst)
+
+
 def elijah_offer(items):
     print_elijah_house()
     lst = [
@@ -543,6 +594,7 @@ def elijah_offer(items):
         ]
     time_print_loop(lst)
 
+
 def elijah_not_home(items):
     lst = [
         "Elijah isn't home right now.",
@@ -552,6 +604,7 @@ def elijah_not_home(items):
         ]
     time_print_loop(lst)
     town(items)
+
 
 def elijah_fight(items):
     print_elijah_house()
@@ -563,13 +616,14 @@ def elijah_fight(items):
     time_print_loop(lst)
     contine_on()
     lst = [
-        f'''(Elijah) "I crave the power of {items['key']} and I will crush you to obtain it!"''', 
+        f'''(Elijah) "I crave the power of {items['key']} and I will crush you to obtain it!"''',
         "Elijah gets into a fighting stance.",
         ""
         ]
     time_print_loop(lst)
     contine_on()
     fight(items)
+
 
 def elijah_training(items):
     lst = [
@@ -580,8 +634,8 @@ def elijah_training(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()    
-    lst = [    
+    contine_on()
+    lst = [
         "To conclude your final day of training, Elijah requests that you meet him in front of his house.",
         f'''(Elijah) "{items['player_name']}, everything that you have encountered has prepared you for this."''',
         ""
@@ -607,6 +661,7 @@ def elijah_training(items):
     time_print_loop(lst)
     town(items)
 
+
 def elijah_turned_down(items):
     lst = [
         '''(Elijah) - "I hope you will reconsider my offer." ''',
@@ -616,7 +671,9 @@ def elijah_turned_down(items):
     time_print_loop(lst)
     town(items)
 
+
 # <----- Elijah Flow ----->
+
 
 def elijah(items):
     time_print("You find yourself in front of a sizable log cabin surrounded by odd stone sculptures, both covered in snow.")
@@ -632,18 +689,22 @@ def elijah(items):
         elif answer == "2":
             elijah_turned_down(items)
 
-#<----- Game Play / Items ----->
+
+# <----- Game Play / Items ----->
+
 
 def play():
     items = {
-    'key':'*Some old map*' 
-    'player_name':''
-    }
+        'key': '*Some old map*'
+        'player_name': ''
+        }
     title()
     get_name(items)
     intro_story()
     town(items)
 
-#<----- Play ----->
+
+# <----- Play ----->
+
 
 play()
