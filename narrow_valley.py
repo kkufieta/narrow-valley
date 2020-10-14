@@ -524,6 +524,7 @@ def print_banishing_light():
         ""
         ]
     time_print_img(lst)
+
 def elijah_offer(items):
     print_elijah_house()
     lst = [
