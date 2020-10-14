@@ -22,9 +22,9 @@ def time_print_img(lst):
         print(lst[i])
         time.sleep(.5)
 
-def valid_input(promt, option1, option2):
+def valid_input(prompt, option1, option2):
     while True:
-        response = input(promt).lower()
+        response = input(prompt).lower()
         if option1 in response:
             return option1
         if option2 in response:
