@@ -53,7 +53,8 @@ def contine_on():
 
 
 def intro_fight():
-    time_print('You are both still, waiting for the right time to make your move, and then...\n')
+    time_print('You are both still, waiting for the right time to make your'
+               ' move, and then...\n')
 
 
 def choose_stats(items):
@@ -236,16 +237,20 @@ def winner_endings(items):
     time_print('You have Won!')
     if items['boss_name'] == 'Elijah':
         lst = [
-            "Keeping your promise to Clover, you made the world safe from Elijah and his menacing.",
+            "Keeping your promise to Clover, you made the world safe from"
+            " Elijah and his menacing.",
             "A new journey is in front of you.",
-            f"Good people might need your assistance and the power of {items['key']}.",
+            f"Good people might need your assistance and the power"
+            f" of {items['key']}.",
             "You leave the narrow valley, never to return."
             ]
         time_print_loop(lst)
     elif items['boss_name'] == 'Clover':
         lst = [
-            "You have completed the task given to you by Elijah and dispatched Clover.",
-            "Attainment of *Primal Command* doubles your power and desire for more.",
+            "You have completed the task given to you by Elijah and"
+            " dispatched Clover.",
+            "Attainment of *Primal Command* doubles your power and desire"
+            " for more.",
             "You return to Elijah and plot with him to find more prey.",
             "You two leave the narrow valley, never to return."
             ]
@@ -303,7 +308,8 @@ def get_name(items):
 def intro_story():
     lst = [
         "A brave warrior wanders the world in search of great power.",
-        "Their journey leads them to two sacred mountains divided by a village in a narrow valley.",
+        "Their journey leads them to two sacred mountains divided by a"
+        " village in a narrow valley.",
         ]
     time_print_loop(lst)
     lst = [
@@ -423,7 +429,8 @@ def print_primal_command():
 def clover_offer(items):
     print_clover_house()
     lst = [
-        "Clover, brown-haired and slender, with bright, dark eyes, comes out to greet you.",
+        "Clover, brown-haired and slender, with bright, dark eyes, comes out"
+        " to greet you.",
         "She peers curiously into you, sensing your kind heart...",
         ""
         ]
@@ -431,7 +438,8 @@ def clover_offer(items):
     contine_on()
     lst = [
         f'''(Clover) "{items['player_name']}, I am the master you seek."''',
-        '''(Clover) "Train under me and unearth the secrets only I and Mother Nature know."''',
+        '''(Clover) "Train under me and unearth the secrets only I and'''
+        ''' Mother Nature know."''',
         "",
         "Will you accept her offer?"
         ]
@@ -452,15 +460,19 @@ def clover_not_home(items):
 def clover_fight(items):
     print_clover_house()
     lst = [
-        "Clover, brown-haired and slender, with bright, dark eyes, comes out to greet you.",
-        f"She notices {items['key']} in your possession and understands why you have come.",
+        "Clover, brown-haired and slender, with bright, dark eyes, comes out"
+        " to greet you.",
+        f"She notices {items['key']} in your possession and understands why"
+        " you have come.",
         ""
         ]
     time_print_loop(lst)
     contine_on()
     lst = [
-        '''(Clover) "I will not be intimidated by one of Elijah's thugs!"''',
-        "Clover twirls her hands in the air, forming a bright green aura around herself.",
+        '''(Clover) "I will not be intimidated by one of Elijah's'''
+        ''' thugs!"''',
+        "Clover twirls her hands in the air, forming a bright green aura"
+        " around herself.",
         ""
         ]
     time_print_loop(lst)
@@ -470,25 +482,32 @@ def clover_fight(items):
 
 def clover_training(items):
     lst = [
-        "For the next year, you apprentice yourself to Clover, cultivating your skills.",
-        "You pickup that a man named Elijah has been trying to steal Clover's power for many years.",
-        "You promise Clover that you will bring an end to Elijah's reign of terror.",
+        "For the next year, you apprentice yourself to Clover, cultivating"
+        " your skills.",
+        "You pickup that a man named Elijah has been trying to steal Clover's"
+        " power for many years.",
+        "You promise Clover that you will bring an end to Elijah's reign of"
+        " terror.",
         "Clover is touched by your commitment.",
         ""
         ]
     time_print_loop(lst)
     contine_on()
     lst = [
-        "To conclude your final day of training, Clover requests that you meet her in front of her house.",
-        f'''(Clover) "{items['player_name']}, everything that you have endured was to prepare you for this."''',
+        "To conclude your final day of training, Clover requests that you"
+        " meet her in front of her house.",
+        f'''(Clover) "{items['player_name']}, everything that you have'''
+        ''' endured was to prepare you for this."''',
         ""
         ]
     time_print_loop(lst)
     contine_on()
     print_primal_command()
     lst = [
-        '''(Clover) "*Primal Command* is my greatest weapon and now it is yours."''',
-        f'''(Clover) "Remember your promise and good luck on your travels {items['player_name']}."''',
+        '''(Clover) "*Primal Command* is my greatest weapon and now it is'''
+        ''' yours."''',
+        f'''(Clover) "Remember your promise and good luck on your travels'''
+        f''' {items['player_name']}."''',
         ""
         ]
     time_print_loop(lst)
@@ -497,7 +516,8 @@ def clover_training(items):
     lst = [
         "You receive *Primal Command!*",
         "",
-        "With the training from Clover and the power of *Primal Command*, you leave and head into town.",
+        "With the training from Clover and the power of *Primal Command*, you"
+        " leave and head into town.",
         ""
         ]
     time_print_loop(lst)
@@ -506,7 +526,7 @@ def clover_training(items):
 
 def clover_turned_down(items):
     lst = [
-        '''(Clover) "I hope you will reconsider my offer." ''',
+        '''(Clover) "I hope you will reconsider my offer."''',
         "You leave the small house and return to town.",
         ""
         ]
@@ -518,7 +538,8 @@ def clover_turned_down(items):
 
 
 def clover(items):
-    time_print("You find yourself in front of a small wooden house surrounded by tall grass and massive pine trees.")
+    time_print("You find yourself in front of a small wooden house surrounded"
+               " by tall grass and massive pine trees.")
     if items['key'] == '*Primal Command*':
         clover_not_home(items)
     elif items['key'] == '*Banishing Light*':
@@ -580,7 +601,8 @@ def print_banishing_light():
 def elijah_offer(items):
     print_elijah_house()
     lst = [
-        "Elijah, tall with powerful shoulders, and fierce blue eyes, comes out to greet you.",
+        "Elijah, tall with powerful shoulders, and fierce blue eyes, comes"
+        " out to greet you.",
         "He sizes you up, feeling your desire for power...",
         ""
         ]
@@ -588,7 +610,8 @@ def elijah_offer(items):
     contine_on()
     lst = [
         f'''(Elijah) "{items['player_name']}, I am the master you seek."''',
-        '''(Elijah) "Take my guidance and uncover the limitless potential of the spirit realm."''',
+        f'''(Elijah) "Take my guidance and uncover the limitless potential'''
+        ''' of the spirit realm."''',
         "",
         "Will you accept his offer?"
         ]
@@ -609,14 +632,17 @@ def elijah_not_home(items):
 def elijah_fight(items):
     print_elijah_house()
     lst = [
-        "Elijah, tall with powerful shoulders, and fierce blue eyes, comes out to greet you.",
-        f"He smiles at you and begins to glow bright red as he notices you possess {items['key']}.",
+        "Elijah, tall with powerful shoulders, and fierce blue eyes, comes"
+        " out to greet you.",
+        f"He smiles at you and begins to glow bright red as he notices you"
+        f" possess {items['key']}.",
         ""
         ]
     time_print_loop(lst)
     contine_on()
     lst = [
-        f'''(Elijah) "I crave the power of {items['key']} and I will crush you to obtain it!"''',
+        f'''(Elijah) "I crave the power of {items['key']} and I will crush'''
+        ''' you to obtain it!"''',
         "Elijah gets into a fighting stance.",
         ""
         ]
@@ -627,26 +653,34 @@ def elijah_fight(items):
 
 def elijah_training(items):
     lst = [
-        "For the next year, you memorize every mystical technique offered to you by Elijah.",
-        "Elijah shares his desire to increase his capabilities by defeating other masters and taking their power.",
-        "He wants you to assist him and share the bounty, both of you becoming all-powerful.",
+        "For the next year, you memorize every mystical technique offered to"
+        " you by Elijah.",
+        "Elijah shares his desire to increase his capabilities by defeating"
+        " other masters and taking their power.",
+        "He wants you to assist him and share the bounty, both of you becoming"
+        " all-powerful.",
         "Elijah feels that with you, his dreams can be realized.",
         ""
         ]
     time_print_loop(lst)
     contine_on()
     lst = [
-        "To conclude your final day of training, Elijah requests that you meet him in front of his house.",
-        f'''(Elijah) "{items['player_name']}, everything that you have encountered has prepared you for this."''',
+        "To conclude your final day of training, Elijah requests that you meet"
+        " him in front of his house.",
+        f'''(Elijah) "{items['player_name']}, everything that you have"
+        " encountered has prepared you for this."''',
         ""
         ]
     time_print_loop(lst)
     contine_on()
     print_banishing_light()
     lst = [
-        '''(Elijah) "*Banishing Light* is my greatest technique and now it is yours."''',
-        f'''(Elijah) "{items['player_name']}, I want you to defeat a master named Clover to the east and take her power.''',
-        '''(Elijah) "Leave now and only return when you have completed your mission."''',
+        '''(Elijah) "*Banishing Light* is my greatest technique and now it '''
+        '''is yours."''',
+        f'''(Elijah) "{items['player_name']}, I want you to defeat a master'''
+        ''' named Clover to the east and take her power.''',
+        '''(Elijah) "Leave now and only return when you have completed your'''
+        ''' mission."''',
         ""
         ]
     time_print_loop(lst)
@@ -655,7 +689,8 @@ def elijah_training(items):
     lst = [
         "You receive *Banishing Light*",
         "",
-        "With the training from Elijah and the power of *Banishing Light*, you leave and head into town.",
+        "With the training from Elijah and the power of *Banishing Light*, you"
+        " leave and head into town.",
         ""
         ]
     time_print_loop(lst)
@@ -676,7 +711,8 @@ def elijah_turned_down(items):
 
 
 def elijah(items):
-    time_print("You find yourself in front of a sizable log cabin surrounded by odd stone sculptures, both covered in snow.")
+    time_print("You find yourself in front of a sizable log cabin surrounded"
+               " by odd stone sculptures, both covered in snow.")
     if items['key'] == '*Banishing Light*':
         elijah_not_home(items)
     elif items['key'] == '*Primal Command*':
@@ -695,7 +731,7 @@ def elijah(items):
 
 def play():
     items = {
-        'key': '*Some old map*'
+        'key': '*Some old map*',
         'player_name': ''
         }
     title()
