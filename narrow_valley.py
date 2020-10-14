@@ -14,12 +14,12 @@ def time_print(string):
     time.sleep(2)
 
 def time_print_loop(lst):
-    for i in range(len(lst)):
-        time_print(lst[i])
+    for element in lst:
+        time_print(element)
 
 def time_print_img(lst):
-    for i in range(len(lst)):
-        print(lst[i])
+    for element in lst:
+        print(element)
         time.sleep(.5)
 
 def valid_input(prompt, option1, option2):
