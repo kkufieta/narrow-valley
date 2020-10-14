@@ -139,7 +139,7 @@ def clover_attacks(items):
 def elijah_attack_shout(items):
     lst = [
         f"{items['boss_name']} shouts *Banishing Light*! as a massive beam of light stricks you from the sky.",
-        f"Dark clouds start to break as {items['boss_name']} shouts *Banishing Light*! and a column of light blasts you from above.",
+        f"Dark clouds part as {items['boss_name']} shouts *Banishing Light*! and a column of light blasts you from above.",
         f"{items['boss_name']} chops his hand downward and shouts *Banishing Light*! as a pillar of light collides with you."
         ]
     time_print(random.choice(lst))
@@ -327,7 +327,7 @@ def get_location(items):
     return number
 
 def check_bag(items):
-    time_print(f"You have {items['key']} in you bag.\n")
+    time_print(f"You have {items['key']} in your bag.\n")
     town(items)
 
 #<----- Story Flow ----->
