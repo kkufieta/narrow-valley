@@ -33,13 +33,8 @@ def valid_input(prompt, option1, option2):
             time_print("I don't understand.")
     return response
 
-def contine_on():
-    while True:
-        response = input("Enter (1) to continue.\n").lower()
-        if "1" in response:
-            break
-        else:
-            time_print("I don't understand.")
+def continue_on():
+    input("Enter any character to continue.\n")
 
 #<------------------------------------------------------------ Fight System ------------------------------------------------------------>    
 
@@ -192,7 +187,7 @@ def player_attack(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
 
 def boss_taunt(items):
     taunts = [
@@ -291,7 +286,7 @@ def intro_story():
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     lst = [
         "           )            _     / \ ",
         "   /\    ( _   _._     / \   /^  \ ",
@@ -384,7 +379,7 @@ def clover_offer(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     lst = [
         f'''(Clover) "{items['player_name']}, I am the master you seek."''',
         '''(Clover) "Train under me and unearth the secrets only I and Mother Nature know."''',
@@ -411,14 +406,14 @@ def clover_fight(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     lst = [
         '''(Clover) "I will not be intimidated by one of Elijah's thugs!"''', 
         "Clover twirls her hands in the air, forming a bright green aura around herself.",
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     fight(items)
 
 def clover_training(items):
@@ -430,14 +425,14 @@ def clover_training(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()           
+    continue_on()           
     lst = [
         "To conclude your final day of training, Clover requests that you meet her infront of her house.",
         f'''(Clover) "{items['player_name']}, everything that you have endured was to prepare you for this."''',
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     print_primal_command()
     lst = [
         '''(Clover) "*Primal Command* is my greatest weapon and now it is yours."''',
@@ -446,7 +441,7 @@ def clover_training(items):
         ]
     time_print_loop(lst)
     items['key'] = '*Primal Command*'
-    contine_on()
+    continue_on()
     lst = [
         "You recieve *Primal Command!*",
         "",
@@ -531,7 +526,7 @@ def elijah_offer(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     lst = [
         f'''(Elijah) "{items['player_name']}, I am the master you seek."''',
         '''(Elijah) "Take my guidence and uncover the limitless potential of the spirit relm."''',
@@ -558,14 +553,14 @@ def elijah_fight(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     lst = [
         f'''(Elijah) "I crave the power of {items['key']} and i will crush you to obtain it!"''', 
         "Elijah gets into a fighting stance.",
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     fight(items)
 
 def elijah_training(items):
@@ -577,14 +572,14 @@ def elijah_training(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()    
+    continue_on()    
     lst = [    
         "To conclude your final day of training, Elijah requests that you meet him infront of his house.",
         f'''(Elijah) "{items['player_name']}, everything that you have encountered has prepare you for this."''',
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     print_banishing_light()
     lst = [
         '''(Elijah) "*Banishing Light* is my greatest technique and now it is yours."''',
@@ -593,7 +588,7 @@ def elijah_training(items):
         ""
         ]
     time_print_loop(lst)
-    contine_on()
+    continue_on()
     items['key'] = '*Banishing Light*'
     lst = [
         "You recieve *Banishing Light*",
