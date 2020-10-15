@@ -669,8 +669,8 @@ def elijah_training(items):
     lst = [
         "To conclude your final day of training, Elijah requests that you meet"
         " him in front of his house.",
-        f'''(Elijah) "{items['player_name']}, everything that you have"
-        " encountered has prepared you for this."''',
+        f'''(Elijah) "{items['player_name']}, everything that you have'''
+        ''' encountered has prepared you for this."''',
         ""
         ]
     time_print_loop(lst)
