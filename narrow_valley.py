@@ -38,7 +38,7 @@ def valid_input(prompt, option1, option2):
             time_print("I don't understand.")
 
 def continue_on():
-    input("(Enter) to continue.\n")
+    input("Press (enter) to continue.\n")
 
 
 # <--------------- Fight System --------------->
@@ -152,7 +152,7 @@ def clover_attacks(items):
 def elijah_attack_shout(items):
     lst = [
         f"{items['boss_name']} shouts *Banishing Light*! as a massive beam"
-        " of light stricks you from the sky.",
+        " of light strikes you from the sky.",
         f"Dark clouds part as {items['boss_name']} shouts *Banishing Light*!"
         " and a column of light blasts you from above.",
         f"{items['boss_name']} chops his hand downward and shouts *Banishing"
@@ -197,7 +197,7 @@ def boss_turn(items):
 def player_attack_shout(items):
     lst = [
         f"{items['player_name']} bolts toward {items['boss_name']}, shouting"
-        f" {items['key']}!, as he rams {items['boss_name']} with a punishing strike.",
+        f" {items['key']}!, and rams {items['boss_name']} with a punishing strike.",
         f"With outstretched arms and palms aimed at {items['boss_name']},"
         f" {items['player_name']} shouts {items['key']}! and hammers"
         f" {items['boss_name']} with a powerful blow.",
@@ -358,7 +358,7 @@ def intro_story():
 
 def get_location(items):
     lst = [
-        f"What do you wan't to do {items['player_name']}?",
+        f"What do you want to do {items['player_name']}?",
         "(1) Traverse the wooded mountain to the east.",
         "(2) Hike the snow-covered mountain to the west."
         ]
@@ -486,7 +486,7 @@ def clover_training(items):
     lst = [
         "For the next year, you apprentice yourself to Clover, cultivating"
         " your skills.",
-        "You pickup that a man named Elijah has been trying to steal Clover's"
+        "You pick up that a man named Elijah has been trying to steal Clover's"
         " power for many years.",
         "You promise Clover that you will bring an end to Elijah's reign of"
         " terror.",
@@ -508,7 +508,7 @@ def clover_training(items):
     lst = [
         '''(Clover) "*Primal Command* is my greatest weapon and now it is'''
         ''' yours."''',
-        f'''(Clover) "Remember your promise and good luck on your travels'''
+        '''(Clover) "Remember your promise and good luck on your travels'''
         f''' {items['player_name']}."''',
         ""
         ]
@@ -612,7 +612,7 @@ def elijah_offer(items):
     continue_on()
     lst = [
         f'''(Elijah) "{items['player_name']}, I am the master you seek."''',
-        f'''(Elijah) "Take my guidance and uncover the limitless potential'''
+        '''(Elijah) "Take my guidance and uncover the limitless potential'''
         ''' of the spirit realm."''',
         "",
         "Will you accept his offer?"
@@ -636,7 +636,7 @@ def elijah_fight(items):
     lst = [
         "Elijah, tall with powerful shoulders, and fierce blue eyes, comes"
         " out to greet you.",
-        f"He smiles at you and begins to glow bright red as he notices you"
+        "He smiles at you and begins to form a bright red aura around himself as he notices you"
         f" possess {items['key']}.",
         ""
         ]
@@ -733,7 +733,7 @@ def elijah(items):
 
 def play():
     items = {
-        'key': '*Some old map*',
+        'key': 'some crumds and dust',
         'player_name': ''
         }
     title()
