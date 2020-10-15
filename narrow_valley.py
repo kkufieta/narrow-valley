@@ -4,6 +4,9 @@ import random
 # <--------------- Basic Functions --------------->
 
 
+
+
+
 def coin_flip():
     return random.choice(['heads', 'tails'])
 
@@ -13,8 +16,10 @@ def die_roll():
 
 
 def time_print(string):
+    test_speed = .5
+    play_speed = 2
     print(string)
-    time.sleep(2)
+    time.sleep(test_speed)
 
 
 def time_print_loop(lst):
@@ -23,9 +28,11 @@ def time_print_loop(lst):
 
 
 def time_print_img(lst):
+    test_speed = .2
+    play_speed = .5
     for element in lst:
         print(element)
-        time.sleep(.5)
+        time.sleep(test_speed)
 
 def valid_input(prompt, option1, option2):
     while True:
@@ -49,7 +56,7 @@ def intro_fight():
                ' move, and then...\n')
 
 
-def choose_stats(items):
+def choose_stats(game_data):
     opt1 = {
         'boss_hp': 15,
         'player_hp': 15,
@@ -58,13 +65,13 @@ def choose_stats(items):
     opt2 = {
         'boss_hp': 15,
         'player_hp': 15,
-        'boss_name': 'Clover',
+        'boss_name': 'Clover'
         }
-    if items['key'] == '*Primal Command*':
-        items.update(opt1)
+    if game_data['bag'] == '*Primal Command*':
+        game_data.update(opt1)
     else:
-        items.update(opt2)
-    return items
+        game_data.update(opt2)
+    return game_data
 
 
 def play_again():
@@ -89,18 +96,18 @@ def play_again():
 # <----- Fight Flow ----->
 
 
-def pick_who_attacks(items):
+def pick_who_attacks(game_data):
     result = coin_flip()
     if result == 'heads':
-        player_turn(items)
+        player_turn(game_data)
     elif result == 'tails':
-        boss_turn(items)
+        boss_turn(game_data)
 
 
 # <-------------------- Boss Functions -------------------->
 
 
-def dont_run(items):
+def dont_run(game_data):
     lst = [
         "I will not give up!",
         "I'm not done yet!",
@@ -108,84 +115,84 @@ def dont_run(items):
         "I can do this!",
         "I'm not afraid!"
         ]
-    time_print(f'''({items['player_name']}) "{random.choice(lst)}"\n''')
-    pick_who_attacks(items)
+    time_print(f'''({game_data['player_name']}) "{random.choice(lst)}"\n''')
+    pick_who_attacks(game_data)
 
 
-def run(items):
+def run(game_data):
     lst = [
-        f"{items['player_name']} runs from {items['boss_name']}.",
+        f"{game_data['player_name']} runs from {game_data['boss_name']}.",
         "You live to fight another day.",
-        f"{items['player_name']} returns to town.",
+        f"{game_data['player_name']} returns to town.",
         ""
         ]
     time_print_loop(lst)
-    town(items)
+    town(game_data)
 
 
-def clover_attack_shout(items):
+def clover_attack_shout(boss_name):
     lst = [
-        f"{items['boss_name']} thrust her hands out toward you and shouts"
+        f"{boss_name} thrust her hands out toward you and shouts"
         " *Primal Command*!, as a torrent of earth, hail, and flames"
         " crash into you.",
-        f"{items['boss_name']} shouts *Primal Command*! as a mass of stones,"
+        f"{boss_name} shouts *Primal Command*! as a mass of stones,"
         " embers, and icy shards tornado around you, stiking you from every side.",
-        f"{items['boss_name']} shouts *Primal Command*! and blast you with a"
+        f"{boss_name} shouts *Primal Command*! and blast you with a"
         " tempest infused with firey ash, molten rock, and blistering steam."
         ]
     time_print(random.choice(lst))
 
 
-def clover_attacks(items):
+def clover_attacks(game_data):
     dmg = die_roll() + die_roll()
-    items['player_hp'] -= dmg
-    clover_attack_shout(items)
+    game_data['player_hp'] -= dmg
+    clover_attack_shout(game_data['boss_name'])
     lst = [
         "",
-        f"{items['boss_name']} hits you for {dmg} damage.",
-        f"your health is now at {items['player_hp']}",
+        f"{game_data['boss_name']} hits you for {dmg} damage.",
+        f"your health is now at {game_data['player_hp']}",
         ""
         ]
     time_print_loop(lst)
 
 
-def elijah_attack_shout(items):
+def elijah_attack_shout(boss_name):
     lst = [
-        f"{items['boss_name']} shouts *Banishing Light*! as a massive beam"
+        f"{boss_name} shouts *Banishing Light*! as a massive beam"
         " of light strikes you from the sky.",
-        f"Dark clouds part as {items['boss_name']} shouts *Banishing Light*!"
+        f"Dark clouds part as {boss_name} shouts *Banishing Light*!"
         " and a column of light blasts you from above.",
-        f"{items['boss_name']} chops his hand downward and shouts *Banishing"
+        f"{boss_name} chops his hand downward and shouts *Banishing"
         " Light*! as a pillar of light collides with you."
         ]
     time_print(random.choice(lst))
 
 
-def elijah_attacks(items):
+def elijah_attacks(game_data):
     dmg = die_roll() * 2
-    items['player_hp'] -= dmg
-    elijah_attack_shout(items)
+    game_data['player_hp'] -= dmg
+    elijah_attack_shout(game_data['boss_name'])
     lst = [
         "",
-        f"{items['boss_name']} hits you for {dmg} damage.",
-        f"your health is now at {items['player_hp']}",
+        f"{game_data['boss_name']} hits you for {dmg} damage.",
+        f"your health is now at {game_data['player_hp']}",
         ""
         ]
     time_print_loop(lst)
 
 
-def boss_turn(items):
-    if items['boss_name'] == 'Clover':
-        clover_attacks(items)
+def boss_turn(game_data):
+    if game_data['boss_name'] == 'Clover':
+        clover_attacks(game_data)
     else:
-        elijah_attacks(items)
-    if items['player_hp'] > 0:
+        elijah_attacks(game_data)
+    if game_data['player_hp'] > 0:
         answer = valid_input('Continue fighting or run away?\n(1) Fight\n(2)'
                              ' Run\n', '1', '2')
         if answer == "1":
-            dont_run(items)
+            dont_run(game_data)
         elif answer == "2":
-            run(items)
+            run(game_data)
     else:
         time_print('You have died!')
         play_again()
@@ -194,37 +201,37 @@ def boss_turn(items):
 # <-------------------- Player Functions -------------------->
 
 
-def player_attack_shout(items):
+def player_attack_shout(player_name, boss_name, special_item):
     lst = [
-        f"{items['player_name']} bolts toward {items['boss_name']}, shouting"
-        f" {items['key']}!, and rams {items['boss_name']} with a punishing strike.",
-        f"With outstretched arms and palms aimed at {items['boss_name']},"
-        f" {items['player_name']} shouts {items['key']}! and hammers"
-        f" {items['boss_name']} with a powerful blow.",
-        f"Shouting {items['key']}!, {items['player_name']} releases a migthy"
-        f" force that smashes {items['boss_name']}."
+        f"{player_name} bolts toward {boss_name}, shouting"
+        f" {special_item}!, and rams {boss_name} with a punishing strike.",
+        f"With outstretched arms and palms aimed at {boss_name},"
+        f" {player_name} shouts {special_item}! and hammers"
+        f" {boss_name} with a powerful blow.",
+        f"Shouting {special_item}!, {player_name} releases a migthy"
+        f" force that smashes {boss_name}."
         ]
     time_print(random.choice(lst))
 
 
-def player_attack(items):
-    if items['boss_name'] == 'Clover':
+def player_attack(game_data):
+    if game_data['boss_name'] == 'Clover':
         dmg = die_roll() * 2
     else:
         dmg = die_roll() + die_roll()
-    items['boss_hp'] -= dmg
-    player_attack_shout(items)
+    game_data['boss_hp'] -= dmg
+    player_attack_shout(game_data['player_name'], game_data['boss_name'], game_data['bag'])
     lst = [
         "",
-        f"You hit {items['boss_name']} for {dmg} damage points.",
-        f"{items['boss_name']}'s health is now at {items['boss_hp']}",
+        f"You hit {game_data['boss_name']} for {dmg} damage points.",
+        f"{game_data['boss_name']}'s health is now at {game_data['boss_hp']}",
         ""
         ]
     time_print_loop(lst)
     continue_on()
 
 
-def boss_taunt(items):
+def boss_taunt(boss_name):
     taunts = [
         "Not bad!",
         "Just a scratch!",
@@ -232,22 +239,22 @@ def boss_taunt(items):
         "That made me angry!",
         "That won't happen again!"
         ]
-    time_print(f'''({items['boss_name']}) "{random.choice(taunts)}"\n''')
+    time_print(f'''({boss_name}) "{random.choice(taunts)}"\n''')
 
 
-def winner_endings(items):
+def winner_endings(boss_name, special_item):
     time_print('You have Won!')
-    if items['boss_name'] == 'Elijah':
+    if boss_name == 'Elijah':
         lst = [
             "Keeping your promise to Clover, you made the world safe from"
             " Elijah and his menacing.",
             "A new journey is in front of you.",
             f"Good people might need your assistance and the power"
-            f" of {items['key']}.",
+            f" of {special_item}.",
             "You leave the narrow valley, never to return."
             ]
         time_print_loop(lst)
-    elif items['boss_name'] == 'Clover':
+    elif boss_name == 'Clover':
         lst = [
             "You have completed the task given to you by Elijah and"
             " dispatched Clover.",
@@ -259,22 +266,22 @@ def winner_endings(items):
         time_print_loop(lst)
 
 
-def player_turn(items):
-    player_attack(items)
-    if items['boss_hp'] > 0:
-        boss_taunt(items)
-        pick_who_attacks(items)
+def player_turn(game_data):
+    player_attack(game_data)
+    if game_data['boss_hp'] > 0:
+        boss_taunt(game_data['boss_name'])
+        pick_who_attacks(game_data)
     else:
-        winner_endings(items)
+        winner_endings(game_data['boss_name'], game_data['bag'])
         play_again()
 
 
 # <----- Fight ----->
 
 
-def fight(items):
+def fight(game_data):
     intro_fight()
-    pick_who_attacks(choose_stats(items))
+    pick_who_attacks(choose_stats(game_data))
 
 
 # <--------------- Story --------------->
@@ -302,9 +309,9 @@ def title():
     time_print_img(lst)
 
 
-def get_name(items):
-    items['player_name'] = input("To start enter your name\n")
-    return items
+def get_name(game_data):
+    game_data['player_name'] = input("To start enter your name\n")
+    return game_data
 
 
 def intro_story():
@@ -356,9 +363,9 @@ def intro_story():
     time_print_loop(lst)
 
 
-def get_location(items):
+def get_location(player_name):
     lst = [
-        f"What do you want to do {items['player_name']}?",
+        f"What do you want to do {player_name}?",
         "(1) Traverse the wooded mountain to the east.",
         "(2) Hike the snow-covered mountain to the west."
         ]
@@ -367,24 +374,24 @@ def get_location(items):
     return number
 
 
-def check_bag(items):
-    time_print(f"You have {items['key']} in your bag.\n")
-    town(items)
+def check_bag(game_data):
+    time_print(f"You have {game_data['bag']} in your bag.\n")
+    town(game_data)
 
 
 # <----- Story Flow ----->
 
 
-def town(items):
-    choice = get_location(items)
+def town(game_data):
+    choice = get_location(game_data['player_name'])
     if choice == '1':
-        clover(items)
+        clover(game_data)
     elif choice == '2':
-        elijah(items)
+        elijah(game_data)
     elif choice == '3':
-        check_bag(items)
+        check_bag(game_data)
     else:
-        town(items)
+        town(game_data)
 
 
 # <-------------------- Clover Functions -------------------->
@@ -428,7 +435,7 @@ def print_primal_command():
     time_print_img(lst)
 
 
-def clover_offer(items):
+def clover_offer(player_name):
     print_clover_house()
     lst = [
         "Clover, brown-haired and slender, with bright, dark eyes, comes out"
@@ -439,7 +446,7 @@ def clover_offer(items):
     time_print_loop(lst)
     continue_on()
     lst = [
-        f'''(Clover) "{items['player_name']}, I am the master you seek."''',
+        f'''(Clover) "{player_name}, I am the master you seek."''',
         '''(Clover) "Train under me and unearth the secrets only I and'''
         ''' Mother Nature know."''',
         "",
@@ -448,7 +455,7 @@ def clover_offer(items):
     time_print_loop(lst)
 
 
-def clover_not_home(items):
+def clover_not_home(game_data):
     lst = [
         "Clover isn't home right now.",
         "There doesn't seem to be much to do here.",
@@ -456,15 +463,15 @@ def clover_not_home(items):
         ""
         ]
     time_print_loop(lst)
-    town(items)
+    town(game_data)
 
 
-def clover_fight(items):
+def clover_fight(game_data):
     print_clover_house()
     lst = [
         "Clover, brown-haired and slender, with bright, dark eyes, comes out"
         " to greet you.",
-        f"She notices {items['key']} in your possession and understands why"
+        f"She notices {game_data['bag']} in your possession and understands why"
         " you have come.",
         ""
         ]
@@ -479,10 +486,10 @@ def clover_fight(items):
         ]
     time_print_loop(lst)
     continue_on()
-    fight(items)
+    fight(game_data)
 
 
-def clover_training(items):
+def clover_training(game_data):
     lst = [
         "For the next year, you apprentice yourself to Clover, cultivating"
         " your skills.",
@@ -498,7 +505,7 @@ def clover_training(items):
     lst = [
         "To conclude your final day of training, Clover requests that you"
         " meet her in front of her house.",
-        f'''(Clover) "{items['player_name']}, everything that you have'''
+        f'''(Clover) "{game_data['player_name']}, everything that you have'''
         ''' endured was to prepare you for this."''',
         ""
         ]
@@ -509,11 +516,11 @@ def clover_training(items):
         '''(Clover) "*Primal Command* is my greatest weapon and now it is'''
         ''' yours."''',
         '''(Clover) "Remember your promise and good luck on your travels'''
-        f''' {items['player_name']}."''',
+        f''' {game_data['player_name']}."''',
         ""
         ]
     time_print_loop(lst)
-    items['key'] = '*Primal Command*'
+    game_data['bag'] = '*Primal Command*'
     continue_on()
     lst = [
         "You receive *Primal Command!*",
@@ -523,36 +530,36 @@ def clover_training(items):
         ""
         ]
     time_print_loop(lst)
-    town(items)
+    town(game_data)
 
 
-def clover_turned_down(items):
+def clover_turned_down(game_data):
     lst = [
         '''(Clover) "I hope you will reconsider my offer."''',
         "You leave the small house and return to town.",
         ""
         ]
     time_print_loop(lst)
-    town(items)
+    town(game_data)
 
 
 # <----- Clover Flow ----->
 
 
-def clover(items):
+def clover(game_data):
     time_print("You find yourself in front of a small wooden house surrounded"
                " by tall grass and massive pine trees.")
-    if items['key'] == '*Primal Command*':
-        clover_not_home(items)
-    elif items['key'] == '*Banishing Light*':
-        clover_fight(items)
+    if game_data['bag'] == '*Primal Command*':
+        clover_not_home(game_data)
+    elif game_data['bag'] == '*Banishing Light*':
+        clover_fight(game_data)
     else:
-        clover_offer(items)
+        clover_offer(game_data['player_name'])
         answer = valid_input("(1) Yes\n(2) No\n", "1", "2")
         if answer == "1":
-            clover_training(items)
+            clover_training(game_data)
         elif answer == "2":
-            clover_turned_down(items)
+            clover_turned_down(game_data)
 
 
 # <-------------------- Elijah Functions -------------------->
@@ -600,7 +607,7 @@ def print_banishing_light():
     time_print_img(lst)
 
 
-def elijah_offer(items):
+def elijah_offer(player_name):
     print_elijah_house()
     lst = [
         "Elijah, tall with powerful shoulders, and fierce blue eyes, comes"
@@ -611,7 +618,7 @@ def elijah_offer(items):
     time_print_loop(lst)
     continue_on()
     lst = [
-        f'''(Elijah) "{items['player_name']}, I am the master you seek."''',
+        f'''(Elijah) "{player_name}, I am the master you seek."''',
         '''(Elijah) "Take my guidance and uncover the limitless potential'''
         ''' of the spirit realm."''',
         "",
@@ -620,7 +627,7 @@ def elijah_offer(items):
     time_print_loop(lst)
 
 
-def elijah_not_home(items):
+def elijah_not_home(game_data):
     lst = [
         "Elijah isn't home right now.",
         "There doesn't seem to be much to do here.",
@@ -628,32 +635,32 @@ def elijah_not_home(items):
         ""
         ]
     time_print_loop(lst)
-    town(items)
+    town(game_data)
 
 
-def elijah_fight(items):
+def elijah_fight(game_data):
     print_elijah_house()
     lst = [
         "Elijah, tall with powerful shoulders, and fierce blue eyes, comes"
         " out to greet you.",
         "He smiles at you and begins to form a bright red aura around himself as he notices you"
-        f" possess {items['key']}.",
+        f" possess {game_data['bag']}.",
         ""
         ]
     time_print_loop(lst)
     continue_on()
     lst = [
-        f'''(Elijah) "I crave the power of {items['key']} and I will crush'''
+        f'''(Elijah) "I crave the power of {game_data['bag']} and I will crush'''
         ''' you to obtain it!"''',
         "Elijah gets into a fighting stance.",
         ""
         ]
     time_print_loop(lst)
     continue_on()
-    fight(items)
+    fight(game_data)
 
 
-def elijah_training(items):
+def elijah_training(game_data):
     lst = [
         "For the next year, you memorize every mystical technique offered to"
         " you by Elijah.",
@@ -669,7 +676,7 @@ def elijah_training(items):
     lst = [
         "To conclude your final day of training, Elijah requests that you meet"
         " him in front of his house.",
-        f'''(Elijah) "{items['player_name']}, everything that you have'''
+        f'''(Elijah) "{game_data['player_name']}, everything that you have'''
         ''' encountered has prepared you for this."''',
         ""
         ]
@@ -679,7 +686,7 @@ def elijah_training(items):
     lst = [
         '''(Elijah) "*Banishing Light* is my greatest technique and now it '''
         '''is yours."''',
-        f'''(Elijah) "{items['player_name']}, I want you to defeat a master'''
+        f'''(Elijah) "{game_data['player_name']}, I want you to defeat a master'''
         ''' named Clover to the east and take her power.''',
         '''(Elijah) "Leave now and only return when you have completed your'''
         ''' mission."''',
@@ -687,7 +694,7 @@ def elijah_training(items):
         ]
     time_print_loop(lst)
     continue_on()
-    items['key'] = '*Banishing Light*'
+    game_data['bag'] = '*Banishing Light*'
     lst = [
         "You receive *Banishing Light*",
         "",
@@ -696,50 +703,56 @@ def elijah_training(items):
         ""
         ]
     time_print_loop(lst)
-    town(items)
+    town(game_data)
 
 
-def elijah_turned_down(items):
+def elijah_turned_down(game_data):
     lst = [
         '''(Elijah) "I hope you will reconsider my offer." ''',
         "You leave the sizable log cabin and return to town.",
         ""
         ]
     time_print_loop(lst)
-    town(items)
+    town(game_data)
 
 
 # <----- Elijah Flow ----->
 
 
-def elijah(items):
+def elijah(game_data):
     time_print("You find yourself in front of a sizable log cabin surrounded"
                " by odd stone sculptures, both covered in snow.")
-    if items['key'] == '*Banishing Light*':
-        elijah_not_home(items)
-    elif items['key'] == '*Primal Command*':
-        elijah_fight(items)
+    if game_data['bag'] == '*Banishing Light*':
+        elijah_not_home(game_data)
+    elif game_data['bag'] == '*Primal Command*':
+        elijah_fight(game_data)
     else:
-        elijah_offer(items)
+        elijah_offer(game_data['player_name'])
         answer = valid_input("(1) Yes\n(2) No\n", "1", "2")
         if answer == "1":
-            elijah_training(items)
+            elijah_training(game_data)
         elif answer == "2":
-            elijah_turned_down(items)
+            elijah_turned_down(game_data)
 
 
-# <----- Game Play / Items ----->
+# <----- Game Play / game_data ----->
+
+
+# game_data holds important stats for the game.
 
 
 def play():
-    items = {
-        'key': 'some crumds and dust',
-        'player_name': ''
+    game_data = {
+        'bag': 'dust and a few crumbs',
+        'player_name': None,
+        'boss_hp': None,
+        'player_hp': None,
+        'boss_name': None
         }
     title()
-    get_name(items)
+    get_name(game_data)
     intro_story()
-    town(items)
+    town(game_data)
 
 
 # <----- Play ----->
