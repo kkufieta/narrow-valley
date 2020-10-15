@@ -19,7 +19,7 @@ def time_print(string):
     test_speed = .5
     play_speed = 2
     print(string)
-    time.sleep(test_speed)
+    time.sleep(play_speed)
 
 
 def time_print_loop(lst):
@@ -32,7 +32,7 @@ def time_print_img(lst):
     play_speed = .5
     for element in lst:
         print(element)
-        time.sleep(test_speed)
+        time.sleep(play_speed)
 
 def valid_input(prompt, option1, option2):
     while True:
@@ -58,13 +58,13 @@ def intro_fight():
 
 def choose_stats(game_data):
     opt1 = {
-        'boss_hp': 15,
-        'player_hp': 15,
+        'boss_hp': 18,
+        'player_hp': 20,
         'boss_name': 'Elijah'
         }
     opt2 = {
-        'boss_hp': 15,
-        'player_hp': 15,
+        'boss_hp': 20,
+        'player_hp': 18,
         'boss_name': 'Clover'
         }
     if game_data['bag'] == '*Primal Command*':
@@ -169,7 +169,7 @@ def elijah_attack_shout(boss_name):
 
 
 def elijah_attacks(game_data):
-    dmg = die_roll() * 2
+    dmg = (die_roll() * 2) + 1
     game_data['player_hp'] -= dmg
     elijah_attack_shout(game_data['boss_name'])
     lst = [
@@ -216,7 +216,7 @@ def player_attack_shout(player_name, boss_name, special_item):
 
 def player_attack(game_data):
     if game_data['boss_name'] == 'Clover':
-        dmg = die_roll() * 2
+        dmg = (die_roll() * 2) + 1
     else:
         dmg = die_roll() + die_roll()
     game_data['boss_hp'] -= dmg
