@@ -4,9 +4,6 @@ import random
 # <--------------- Basic Functions --------------->
 
 
-
-
-
 def coin_flip():
     return random.choice(['heads', 'tails'])
 
@@ -19,7 +16,7 @@ def time_print(string):
     test_speed = .5
     play_speed = 2
     print(string)
-    time.sleep(play_speed)
+    time.sleep(test_speed)
 
 
 def time_print_loop(lst):
@@ -32,7 +29,8 @@ def time_print_img(lst):
     play_speed = .5
     for element in lst:
         print(element)
-        time.sleep(play_speed)
+        time.sleep(test_speed)
+
 
 def valid_input(prompt, option1, option2):
     while True:
@@ -43,6 +41,7 @@ def valid_input(prompt, option1, option2):
             return option2
         else:
             time_print("I don't understand.")
+
 
 def continue_on():
     input("Press (enter) to continue.\n")
@@ -84,10 +83,14 @@ def play_again():
         lst = [
             "",
             " ,----.                                 ,-----. ",
-            "'  .-./    ,--,--.,--,--,--. ,---.     '  .-.  ',--.  ,--.,---. ,--.--. ",
-            "|  | .---.' ,-.  ||        || .-. :    |  | |  | \  `'  /| .-. :|  .--' ",
-            "'  '--'  |\ '-'  ||  |  |  |\   --.    '  '-'  '  \    / \   --.|  | ",
-            " `------'  `--`--'`--`--`--' `----'     `-----'    `--'   `----'`--' ",
+            "'  .-./    ,--,--.,--,--,--. ,---.   "
+            "  '  .-.  ',--.  ,--.,---. ,--.--. ",
+            "|  | .---.' ,-.  ||        || .-. :  "
+            "  |  | |  | \\  `'  /| .-. :|  .--' ",
+            "'  '--'  |\\ '-'  ||  |  |  |\\   --.  "
+            "  '  '-'  '  \\    / \\   --.|  | ",
+            " `------'  `--`--'`--`--`--' `----'  "
+            "   `-----'    `--'   `----'`--' ",
             ""
             ]
         time_print_img(lst)
@@ -136,7 +139,8 @@ def clover_attack_shout(boss_name):
         " *Primal Command*!, as a torrent of earth, hail, and flames"
         " crash into you.",
         f"{boss_name} shouts *Primal Command*! as a mass of stones,"
-        " embers, and icy shards tornado around you, stiking you from every side.",
+        " embers, and icy shards tornado around you, stiking you"
+        " from every side.",
         f"{boss_name} shouts *Primal Command*! and blast you with a"
         " tempest infused with firey ash, molten rock, and blistering steam."
         ]
@@ -220,7 +224,8 @@ def player_attack(game_data):
     else:
         dmg = die_roll() + die_roll()
     game_data['boss_hp'] -= dmg
-    player_attack_shout(game_data['player_name'], game_data['boss_name'], game_data['bag'])
+    player_attack_shout(game_data['player_name'],
+                        game_data['boss_name'], game_data['bag'])
     lst = [
         "",
         f"You hit {game_data['boss_name']} for {dmg} damage points.",
@@ -251,7 +256,8 @@ def winner_endings(boss_name, special_item):
             "A new journey is in front of you.",
             f"Good people might need your assistance and the power"
             f" of {special_item}.",
-            "You leave the narrow valley, never to return."
+            "You leave the narrow valley, never to return.",
+            ""
             ]
         time_print_loop(lst)
     elif boss_name == 'Clover':
@@ -261,7 +267,8 @@ def winner_endings(boss_name, special_item):
             "Attainment of *Primal Command* doubles your power and desire"
             " for more.",
             "You return to Elijah and plot with him to find more prey.",
-            "You two leave the narrow valley, never to return."
+            "You two leave the narrow valley, never to return.",
+            ""
             ]
         time_print_loop(lst)
 
@@ -287,23 +294,49 @@ def fight(game_data):
 # <--------------- Story --------------->
 
 
-def title():
+def title():  # Says Narrow Valley in ascii
     lst = [
         "         ,--.",
-        "       ,--.'|                                                                                       ,--,    ,--,",
-        "   ,--,:  : |                                                                    ,---.            ,--.'|  ,--.'|",
-        ",`--.'`|  ' :             __  ,-.  __  ,-.   ,---.           .---.              /__./|            |  | :  |  | :",
-        "|   :  :  | |           ,' ,'/ /|,' ,'/ /|  '   ,'\         /. ./|         ,---.;  ; |            :  : '  :  : '",
-        ":   |   \ | :  ,--.--.  '  | |' |'  | |' | /   /   |     .-'-. ' |        /___/ \  | |   ,--.--.  |  ' |  |  ' |      ,---.       .--,",
-        "|   : '  '; | /       \ |  |   ,'|  |   ,'.   ; ,. :    /___/ \: |        \   ;  \ ' |  /       \ '  | |  '  | |     /     \    /_ ./|",
-        "'   ' ;.    ;.--.  .-. |'  :  /  '  :  /  '   | |: : .-'.. '   ' .         \   \  \: | .--.  .-. ||  | :  |  | :    /    /  |, ' , ' :",
-        "|   | | \   | \__\/: . .|  | '   |  | '   '   | .; :/___/ \:     '          ;   \  ' .  \__\/: . .'  : |__'  : |__ .    ' / /___/ \: |",
-        "'   : |  ; .' ,' .--.; |;  : |   ;  : |   |   :    |.   \  ' .\  |           \   \   '  ,' .--.; ||  | '.'|  | '.'|'   ;   /|.  \  ' |",
-        "|   | '`--'  /  /  ,.  ||  , ;   |  , ;    \   \  /  \   \   ' \ |            \   `  ; /  /  ,.  |;  :    ;  :    ;'   |  / | \  ;   :",
-        "'   : |     ;  :   .'   \---'     ---'      `----'    \   \  |--'              :   \ |;  :   .'   \  ,   /|  ,   / |   :    |  \  \  ;",
-        ";   |.'     |  ,     .-./                              \   \ |                  '---' |  ,     .-./---`-'  ---`-'   \   \  /    :  \  \ ",
-        "'---'        `--`---'                                   '---'                          `--`---'                      `----'      \  ' ;",
-        "                                                                                                                                  `--`",
+        "       ,--.'|                                                     "
+        "                                  ,--,    ,--,",
+        "   ,--,:  : |                                                     "
+        "               ,---.            ,--.'|  ,--.'|",
+        ",`--.'`|  ' :             __  ,-.  __  ,-.   ,---.           .---. "
+        "             /__./|            |  | :  |  | :",
+        "|   :  :  | |           ,' ,'/ /|,' ,'/ /|  '   ,'\\         /. ./| "
+        "        ,---.;  ; |            :  : '  :  : '",
+        ":   |   \\ | :  ,--.--.  '  | |' |'  | |' | /   /   |     .-'-. ' | "
+        "       /___/ \\  | |   ,--.--.  |  ' |  |  ' |      ,---.       .--,",
+        "|   : '  '; | /       \\ |  |   ,'|  |   ,'.   ; ,. :    /___/ \\: | "
+        "       \\   ;  \\ ' |  /       \\ '  | |  '  | |     /     \\  "
+        "  /_ ./|",
+        "'   ' ;.    ;.--.  .-. |'  :  /  '  :  /  '   | |: : .-'.. '   ' . "
+        "        \\   \\  \\: | .--.  .-. ||  | :  |  | :  "
+        "  /    /  |, ' , ' :",
+        "|   | | \\   | \\__\\/: . .|  | '   |  | '   ' "
+        "  | .; :/___/ \\:     ' "
+        "         ;   \\  ' .  \\__\\/: . .'  : |__'  : |__ . "
+        "   ' / /___/ \\: |",
+        "'   : |  ; .' ,' .--.; |;  : |   ;  : |   | "
+        "  :    |.   \\  ' .\\  | "
+        "          \\   \\   '  ,' .--.; ||  | '.'|  | '.'|' "
+        "  ;   /|.  \\  ' |",
+        "|   | '`--'  /  /  ,.  ||  , ;   |  , ;  "
+        "  \\   \\  /  \\   \\   ' \\ | "
+        "           \\   `  ; /  /  ,.  |;  :    ;  :  "
+        "  ;'   |  / | \\  ;   :",
+        "'   : |     ;  :   .'   \\---'     ---'      `----'    \\   \\  |--' "
+        "             :   \\ |;  :   .'   \\  ,   /|  , "
+        "  / |   :    |  \\  \\  ;",
+        ";   |.'     |  ,     .-./    "
+        "                          \\   \\ |      "
+        "            '---' |  ,     .-./---`-'  ---`-' "
+        "  \\   \\  /    :  \\  \\ ",
+        "'---'        `--`---'                                   '---'      "
+        "                    `--`---'            "
+        "          `----'      \\  ' ;",
+        "                                                                    "
+        "                                                              `--`",
 
         ]
     time_print_img(lst)
@@ -322,13 +355,13 @@ def intro_story():
         ]
     time_print_loop(lst)
     lst = [
-        "        __      /\                ",
-        "       /  \    /  \_               /\ __         ",
-        "      /    \  /\ '  \            _/  /  \     ",
-        "     /\/\  /\/ :' __ \_      _ /   ^/_   `--.",
-        "    /    \/  \  _/  \-'\    /   ^ _   \_ ^ .'\  ",
-        "  /\  .-   `. \/     \ /''' `._ _/ \  ^ `_/   \_",
-        " /  `-.__ `   / .-'.--\ ''' / ^  `--./ .-'  `- ^",
+        "        __      /\\                ",
+        "       /  \\    /  \\_                /\\__   ",
+        "      /    \\  /\\ /  \\            _/  /  \\     ",
+        "     /\\/\\  /\\/ :' __ \\_      _ /   ^/_   `--.",
+        "    /    \\/  \\  _/  \\-'\\    /   ^ _   \\_ ^ .'\\  ",
+        "  /\\  .-   `. \\/     \\ /''' `._ _/ \\  ^ `_/   \\_",
+        " /  `-.__ `   / .-'.--\\ ''' / ^  `--./ .-'  `- ^",
         "/        `.  / /       `.''' .-' ^    '-._ `._  `-",
         "                          ''' "
         ]
@@ -342,10 +375,10 @@ def intro_story():
     time_print_loop(lst)
     continue_on()
     lst = [
-        "           )            _     / \ ",
-        "   /\    ( _   _._     / \   /^  \ ",
-        "\ /  \    |_|-'_~_`-._/ ^ \ /  ^^ \ ",
-        " \ /\/\_.-'-_~_-~_-~-_`-._^/  ^    \ ",
+        "           )            _     / \\ ",
+        "   /\\    ( _   _._     / \\   /^  \\ ",
+        "\\ /  \\    |_|-'_~_`-._/ ^ \\ /  ^^ \\ ",
+        " \\ /\\/\\_.-'-_~_-~_-~-_`-._^/  ^    \\ ",
         "   _.-'_~-_~-_-~-_~_~-_~-_`-._   ^ ",
         "  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
         "    |  [ ]   [ ]  [ ]   [ ] |",
@@ -399,22 +432,38 @@ def town(game_data):
 
 def print_clover_house():
     lst = [
-            "                                   /  \   .      ~         /\         `",
-            "  ~      /\      .            /\  /    \                  /`-\ ",
-            "        /  \       `   /\    /^ \/  ^   \      /\  *     /  ^ \  .",
-            "   .   / ^  \         / ^\  /  ^/  ^  )  \    /^ \      /  ^ ^ \ ",
-            "      /`     \     ` /  ^ \/^ ^/^   (     \  /  ^ \    /      ^ \ ",
-            "     /    ^   \~    / ^   /  ^/ ^ ^ ) ) ^  \/  ^^  \  / ^      `_\ ",
-            "    /^  ^   `  \   / ^ ^   ^ / ^  (  ( ^   / ^   ^  \/`   ^       \ ",
-            "   /     ^ ^    \ /  ^ ^ ^^ / ^  (____) ^ /       ^ /     ^ ^   ^  \ ",
-            "  /`   ^ ^  ^    \    ^  ^  ______|__|_____^ ^     / ^-    ^      ^ \ ",
-            " / `'     ^     `-\     ^  /_______________\ ^ ^  / ^    ``     `-   \ ",
-            "/     ^  ^^   ^   ^\^     /_________________\  ^ /  ^  ^^     ^       \ ",
-            "  -^ ^  ^ ^^-     ^ \^  ^  ||||||   |||__|||    /`-  ^  ^ ^^^   ^^-    \ ",
-            "        | |                ||||||I  |||__|||              | |    ",
-            "||||||| [ ] |||||||||||||| ||||||___|||||||| |||||||||||| [ ] |||||||||| ",
-            '""""""""""""""""""""""""""""""""===="""""""""""""""""""""""""""""""""""""" ',
-            "    |||||||||||||||||||||||||||=====|||||||||||||||||||||||||||||||| "
+            "                                 "
+            "  /  \\   .      ~         /\\         `",
+            "  ~      /\\      .            /\\ "
+            " /    \\                  /`-\\ ",
+            "        /  \\       `   /\\  "
+            "  /^ \\/  ^   \\      /\\  *     /  ^ \\  .",
+            "   .   / ^  \\         / ^\\ "
+            " /  ^/  ^  )  \\    /^ \\      /  ^ ^ \\ ",
+            "      /`     \\     ` /  ^ \\/^ ^/^   (  "
+            "   \\  /  ^ \\    /      ^ \\ ",
+            "     /    ^   \\~    / ^   /  ^/ ^ ^ ) ) ^ "
+            " \\/  ^^  \\  / ^      `_\\ ",
+            "    /^  ^   `  \\   / ^ ^   ^ / ^  (  ( ^  "
+            " / ^   ^  \\/`   ^       \\ ",
+            "   /     ^ ^    \\ /  ^ ^ ^^ / ^  (____) ^ / "
+            "      ^ /     ^ ^   ^  \\ ",
+            "  /`   ^ ^  ^    \\    ^  ^  ______|__|_____^ ^ "
+            "    / ^-    ^      ^ \\ ",
+            " / `'     ^     `-\\     ^  /_______________\\ ^ ^ "
+            " / ^    ``     `-   \\ ",
+            "/     ^  ^^   ^   ^\\^     /_________________\\  ^ / "
+            " ^  ^^     ^       \\ ",
+            "  -^ ^  ^ ^^-     ^ \\^  ^  ||||||   |||__|||    /`-  ^  ^ ^^^ "
+            "  ^^-    \\ ",
+            "        | |                ||||||I  |||__|||             "
+            " | |    ",
+            "||||||| [ ] |||||||||||||| ||||||___|||||||| |||||||||||| [ ]"
+            " |||||||||| ",
+            '""""""""""""""""""""""""""""""""===="""""""""""""""""""""""""'
+            '""""""""""""" ',
+            "    |||||||||||||||||||||||||||=====|||||||||||||||||||||||||"
+            "||||||| "
             ]
     time_print_img(lst)
 
@@ -430,7 +479,7 @@ def print_primal_command():
         "'::;`),'-' (;::' ",
         "  ':(____),_)::' ",
         "    |_______| ",
-        "     \_____/ ",
+        "     \\_____/ ",
         ]
     time_print_img(lst)
 
@@ -471,7 +520,8 @@ def clover_fight(game_data):
     lst = [
         "Clover, brown-haired and slender, with bright, dark eyes, comes out"
         " to greet you.",
-        f"She notices {game_data['bag']} in your possession and understands why"
+        f"She notices {game_data['bag']} in your possession and"
+        " understands why"
         " you have come.",
         ""
         ]
@@ -570,19 +620,23 @@ def print_elijah_house():
 
         "         .           .       (    )       *                *",
         "    *                          )  )",
-        "        .                     (  (              .      /\ ",
-        "                           .   (_)                    /  \  /\ ",
-        "      *       *     ___________[_]___________      /\/    \/  \ ",
-        "           /\      /\   *       ______    *  \    /   /\/\  /\/\ ",
-        "          /  \    //_\          \    /\       \  /\/\/    \/    \ ",
-        "   /\    / /\/\  //___\       *  \__/  \  .    \/       *",
-        "  /  \  /\/*   \//_____\          \ |[]|        \ ",
-        " /\/\/\/       //_______\          \|__|         \           .",
-        "/   __ \      /XXXXXXXXXX\                        \       __",
-        "   /  \ \    /_I_I___I__I_\________________________\     /  \ ",
+        "        .                     (  (              .      /\\ ",
+        "                           .   (_)                    /  \\  /\\ ",
+        "      *       *     ___________[_]___________      /\\/    \\/  \\ ",
+        "           /\\      /\\   *       ______    *  \\  "
+        "  /   /\\/\\  /\\/\\ ",
+        "          /  \\    //_\\          \\    /\\       \\ "
+        " /\\/\\/    \\/    \\ ",
+        "   /\\    / /\\/\\  //___\\       *  \\__/  \\  .  "
+        "  \\/       *",
+        "  /  \\  /\\/*   \\//_____\\          \\ |[]|        \\ ",
+        " /\\/\\/\\/       //_______\\          \\|__|         \\  "
+        "         .",
+        "/   __ \\      /XXXXXXXXXX\\                        \\       __",
+        "   /  \\ \\    /_I_I___I__I_\\________________________\\     /  \\ ",
         "  { () }       I_I   I__I_________[]_|_[]_________I     ( () )",
-        "   (  )  /\    I_II  I__I_________[]_|_[]_________I      (  )",
-        "    []  (  )   I I___I  I         XXXXXXX    /\   I       []",
+        "   (  )  /\\    I_II  I__I_________[]_|_[]_________I      (  )",
+        "    []  (  )   I I___I  I         XXXXXXX    /\\   I       []",
         " ~~~[] ~~[] ~~~~~____~~~~~~~~~~~~~~~~~~~~~~~{  }~~~~~~~~~~[] ~~~~~",
         "          ~~~~~~_____~~~~~~~~~~~~~~~~~~~~~~~~[] ~~~~~~~~~"
         ]
@@ -592,15 +646,15 @@ def print_elijah_house():
 def print_banishing_light():
     lst = [
         "         ( ",
-        "   )    )\(   . ",
+        "   )    )\\(   . ",
         "  (( `.((_))  )) ",
-        "( ),\`.'    `-',' ",
-        " `.)    /\    (,') ",
+        "( ),\\`.'    `-',' ",
+        " `.)    /\\    (,') ",
         " ,',   (  )   '._,) ",
         "((  )   ''   (`--' ",
-        " `'( ) _--_,-.\ ' ",
-        "  ' /,' \( )) `') ",
-        "    (    `\( ",
+        " `'( ) _--_,-.\\ ' ",
+        "  ' /,' \\( )) `') ",
+        "    (    `\\( ",
         "           ) ",
         ""
         ]
@@ -643,15 +697,16 @@ def elijah_fight(game_data):
     lst = [
         "Elijah, tall with powerful shoulders, and fierce blue eyes, comes"
         " out to greet you.",
-        "He smiles at you and begins to form a bright red aura around himself as he notices you"
+        "He smiles at you and begins to form a bright red aura around"
+        " himself as he notices you"
         f" possess {game_data['bag']}.",
         ""
         ]
     time_print_loop(lst)
     continue_on()
     lst = [
-        f'''(Elijah) "I crave the power of {game_data['bag']} and I will crush'''
-        ''' you to obtain it!"''',
+        f'''(Elijah) "I crave the power of {game_data['bag']} '''
+        '''and I will crush you to obtain it!"''',
         "Elijah gets into a fighting stance.",
         ""
         ]
@@ -686,7 +741,8 @@ def elijah_training(game_data):
     lst = [
         '''(Elijah) "*Banishing Light* is my greatest technique and now it '''
         '''is yours."''',
-        f'''(Elijah) "{game_data['player_name']}, I want you to defeat a master'''
+        f'''(Elijah) "{game_data['player_name']}, I want you to'''
+        ''' defeat a master'''
         ''' named Clover to the east and take her power.''',
         '''(Elijah) "Leave now and only return when you have completed your'''
         ''' mission."''',
