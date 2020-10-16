@@ -80,6 +80,7 @@ def play_again():
         play()
     elif replay == "2":
         time_print("Ok, thanks for playing!")
+        # Prints an image that says Game Over in ascii
         lst = [
             "",
             " ,----.                                 ,-----. ",
@@ -354,6 +355,7 @@ def intro_story():
         " village in a narrow valley.",
         ]
     time_print_loop(lst)
+    # Prints an image of Narrow Valley in ascii
     lst = [
         "        __      /\\                ",
         "       /  \\    /  \\_                /\\__   ",
@@ -374,6 +376,7 @@ def intro_story():
         ]
     time_print_loop(lst)
     continue_on()
+    # Prints an image of village inn in ascii
     lst = [
         "           )            _     / \\ ",
         "   /\\    ( _   _._     / \\   /^  \\ ",
@@ -430,7 +433,7 @@ def town(game_data):
 # <-------------------- Clover Functions -------------------->
 
 
-def print_clover_house():
+def print_clover_house():  # Prints an image of Clover's house in ascii
     lst = [
             "                                 "
             "  /  \\   .      ~         /\\         `",
@@ -468,7 +471,7 @@ def print_clover_house():
     time_print_img(lst)
 
 
-def print_primal_command():
+def print_primal_command():  # Print an image of Primal Command in ascii
     lst = [
         "       ... ",
         "    :::;(;::: ",
@@ -615,7 +618,7 @@ def clover(game_data):
 # <-------------------- Elijah Functions -------------------->
 
 
-def print_elijah_house():
+def print_elijah_house():  # prints an image of Elijah's house in ascii
     lst = [
 
         "         .           .       (    )       *                *",
@@ -643,7 +646,7 @@ def print_elijah_house():
     time_print_img(lst)
 
 
-def print_banishing_light():
+def print_banishing_light():  # Prints an image of banishing light in ascii
     lst = [
         "         ( ",
         "   )    )\\(   . ",
