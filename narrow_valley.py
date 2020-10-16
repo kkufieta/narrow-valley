@@ -13,10 +13,10 @@ def die_roll():
 
 
 def time_print(string):
-    test_speed = .5
+    # test_speed = .5
     play_speed = 2
     print(string)
-    time.sleep(test_speed)
+    time.sleep(play_speed)
 
 
 def time_print_loop(lst):
@@ -25,11 +25,11 @@ def time_print_loop(lst):
 
 
 def time_print_img(lst):
-    test_speed = .2
+    # test_speed = .2
     play_speed = .5
     for element in lst:
         print(element)
-        time.sleep(test_speed)
+        time.sleep(play_speed)
 
 
 def valid_input(prompt, option1, option2):
@@ -39,8 +39,7 @@ def valid_input(prompt, option1, option2):
             return option1
         if option2 in response:
             return option2
-        else:
-            time_print("I don't understand.")
+        time_print("I don't understand.")
 
 
 def continue_on():
@@ -140,7 +139,7 @@ def clover_attack_shout(boss_name):
         " *Primal Command*!, as a torrent of earth, hail, and flames"
         " crash into you.",
         f"{boss_name} shouts *Primal Command*! as a mass of stones,"
-        " embers, and icy shards tornado around you, stiking you"
+        " embers, and icy shards tornado around you, striking you"
         " from every side.",
         f"{boss_name} shouts *Primal Command*! and blast you with a"
         " tempest infused with firey ash, molten rock, and blistering steam."
@@ -213,7 +212,7 @@ def player_attack_shout(player_name, boss_name, special_item):
         f"With outstretched arms and palms aimed at {boss_name},"
         f" {player_name} shouts {special_item}! and hammers"
         f" {boss_name} with a powerful blow.",
-        f"Shouting {special_item}!, {player_name} releases a migthy"
+        f"Shouting {special_item}!, {player_name} releases a mighty"
         f" force that smashes {boss_name}."
         ]
     time_print(random.choice(lst))
