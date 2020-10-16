@@ -1,7 +1,10 @@
 import time
 import random
+import sys
 
 # <--------------- Basic Functions --------------->
+PLAY_SPEED_TEXT = 2
+PLAY_SPEED_IMAGE = 0.5
 
 
 def coin_flip():
@@ -13,10 +16,8 @@ def die_roll():
 
 
 def time_print(string):
-    test_speed = .5
-    play_speed = 2
     print(string)
-    time.sleep(test_speed)
+    time.sleep(PLAY_SPEED_TEXT)
 
 
 def time_print_loop(lst):
@@ -25,11 +26,9 @@ def time_print_loop(lst):
 
 
 def time_print_img(lst):
-    test_speed = .2
-    play_speed = .5
     for element in lst:
         print(element)
-        time.sleep(test_speed)
+        time.sleep(PLAY_SPEED_IMAGE)
 
 
 def valid_input(prompt, option1, option2):
@@ -814,4 +813,8 @@ def play():
 # <----- Play ----->
 
 
-play()
+if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        PLAY_SPEED_TEXT = float(sys.argv[1])
+        PLAY_SPEED_IMAGE = float(sys.argv[1]) * 0.25
+    play()
