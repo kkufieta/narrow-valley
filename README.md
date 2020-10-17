@@ -1,6 +1,6 @@
 # narrow-valley
 
-This is a text based game for the Adventure game project from Udacity.
+This is a text-based game for the Adventure game project from Udacity.
 
 There is a lot to check out and enjoy:
 * A thrilling adventure where the player can immerse themself in the game.
