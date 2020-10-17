@@ -16,6 +16,9 @@ def die_roll():
 
 
 def time_print(string):
+    '''
+        Prints and then time sleeps
+    '''
     test_speed = .5
     play_speed = 2
     print(string)
