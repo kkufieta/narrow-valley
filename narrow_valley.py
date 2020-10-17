@@ -775,6 +775,11 @@ def elijah_turned_down(game_data):
 
 
 def elijah(game_data):
+    """Game logic for choosing Elijahs home.
+
+    Arguments:
+    game_data - dictionary with game statistics
+    """
     time_print("You find yourself in front of a sizable log cabin surrounded"
                " by odd stone sculptures, both covered in snow.")
     if game_data['bag'] == '*Banishing Light*':
