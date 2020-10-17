@@ -9,6 +9,7 @@ There is a lot to check out and enjoy:
 * Ascii art 
 
 ## How to play
+-Make sure your editor is in fullscreen mode.
 1. Clone the repo: `git clone https://github.com/briansegs/narrow-valley.git`
 2. Run: 
   * OSx/Linux `python3 narrow_valley.py` 
