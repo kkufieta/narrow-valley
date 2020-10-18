@@ -15,7 +15,7 @@ There is a lot to check out and enjoy:
   * OSx/Linux `python3 narrow_valley.py` 
   * Windows `py .\narrow_valley.py`
 
-#References
+## References
 
 * [For Ascii text art](http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20)
 * [Ascii art inspiration 1](https://ascii.co.uk/)
